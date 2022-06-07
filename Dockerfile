@@ -10,6 +10,7 @@ RUN npm install -g @angular/cli
 RUN mkdir /opt/angular
 WORKDIR /opt/angular
 COPY . .
+RUN ng update
 RUN ng build
 
 FROM nginx:stable as webapp
