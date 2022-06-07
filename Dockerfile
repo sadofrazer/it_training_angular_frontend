@@ -1,4 +1,4 @@
-FROM node:17.9 as angular-build
+FROM 18.3-alpine as angular-build
 LABEL name="Frazer SADO"
 LABEL email="sadofrazer@yahoo.fr"
 RUN npm install npm@latest -g
