@@ -6,13 +6,15 @@ import { ListFormationComponent } from './components/list-formation/list-formati
 import { CreateUpdateFormationComponent } from './components/create-update-formation/create-update-formation.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ListByThemeComponent } from './components/list-by-theme/list-by-theme.component';
+import { DetailFormationComponent } from './components/detail-formation/detail-formation.component';
 
 
 @NgModule({
   declarations: [
     ListFormationComponent,
     CreateUpdateFormationComponent,
-    ListByThemeComponent
+    ListByThemeComponent,
+    DetailFormationComponent
   ],
   imports: [
     CommonModule,

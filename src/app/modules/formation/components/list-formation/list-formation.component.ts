@@ -7,6 +7,7 @@ import { Theme } from 'src/app/entities/Formation/theme';
 import { FormationService } from '../../services/formation.service';
 import { SthemeService } from '../../services/stheme.service';
 import { ThemeService } from '../../services/theme.service';
+import {NgbPanelChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-list-formation',

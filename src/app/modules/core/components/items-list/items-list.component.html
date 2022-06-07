@@ -4,13 +4,13 @@
           <div class="row">
             <ng-container *ngFor="let f of $formations | async index as j">
               <div class="col-md-4 mb-3" *ngIf="j<3">
-                <div class="card mb-4">
+                <div class="card mb-4 mw-100 h-100 d-inline-block position-relative">
                   <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
                       alt="Card image cap">
                   <div class="card-body">
-                    <h4 class="card-title">{{ f.nom }}</h4>
-                    <p class="card-text">{{ f.description }}</p>
-                    <a class="btn btn-primary">Button</a>
+                    <h4 class="card-title  mb-3">{{ f.stheme.nom }}</h4>
+                    <p class="card-text  mb-4 fs-5 h-10">{{ f.nom }}</p>
+                    <a class="btn btn-primary position-absolute bottom-0 start-50 translate-middle-x mb-3">Button</a>
                   </div>
                 </div>
               </div>

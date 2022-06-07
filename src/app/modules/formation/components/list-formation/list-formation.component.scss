@@ -1,8 +1,14 @@
 .container-fluid{
     background: url(../../../../../assets/img/background-list.jpg) no-repeat center;
+    height: 100%;
 }
 
 .card-header{
     background-color: #0275d8;
     margin-top: 0;
+}
+
+.list{
+    margin-left: 10%;
+    margin-right: 10%;
 }
