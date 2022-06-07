@@ -1,0 +1,20 @@
+<div class="container my-2">
+  <ngb-carousel >
+    <ng-template ngbSlide *ngFor="let form of $formations | async index as i">
+          <div class="row">
+            <ng-container *ngFor="let f of $formations | async index as j">
+              <div class="col-md-4 mb-3" *ngIf="j<3">
+                <div class="card mb-4">
+                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                      alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">{{ f.nom }}</h4>
+                    <p class="card-text">{{ f.description }}</p>
+                    <a class="btn btn-primary">Button</a>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+        </div> 
+    </ng-template>     
+  </ngb-carousel>

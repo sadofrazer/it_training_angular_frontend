@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="accordion mb-5" id="accordionPanelsStayOpenExample" *ngFor="let s of sthemes$ | async">
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+              <span class="fs-3">{{s.nom}}</span>
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th scope="col">Code</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Nbre Jours</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let f of formation$ |async">
+                  <th scope="row" *ngIf="f.stheme.idStheme==s.idStheme">{{ f.codeFormation }}</th>
+                  <td *ngIf="f.stheme.idStheme==s.idStheme">{{ f.nom }}</td>
+                  <td *ngIf="f.stheme.idStheme==s.idStheme">{{ f.description }}</td>
+                  <td *ngIf="f.stheme.idStheme==s.idStheme"><span class="badge bg-primary rounded-pill fs-5">{{ f.nbreJrs| number }}</span></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+    </div>
+
+</div>

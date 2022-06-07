@@ -1,0 +1,37 @@
+<div class="container-fluid p-3 mt-5">
+    <div class="container">
+        <div class="card mb-3 mt-2" *ngFor="let t of themes$ | async">
+            <h2 class="card-header">{{ t.nom }}</h2>
+            <div class="card-body">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, numquam. Architecto reiciendis voluptatibus error dolorem nobis minima reprehenderit, officiis possimus delectus fuga natus, maxime ex magnam quos, unde debitis. Dolor?</p>
+                <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0, ngb-panel-1, ngb-panel-2, ngb-panel-3" *ngFor="let s of sthemes$ | async" class="mb-3">
+                    <ng-container *ngIf="t.idTheme==s.theme.idTheme">
+                        <ngb-panel [title]="s.nom">
+                            <ng-template ngbPanelContent>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Code</th>
+                                            <th scope="col">Nom</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Nbre Jours</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let f of formation$ |async">
+                                        <tr *ngIf="f.stheme.idStheme==s.idStheme">
+                                            <th scope="row">{{ f.codeFormation }}</th>
+                                            <td> {{ f.nom }}</td>
+                                            <td>{{ f.description }}</td>
+                                            <td><span class="badge bg-primary rounded-pill fs-5">{{ f.nbreJrs| number }}</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </ng-template>
+                        </ngb-panel>
+                    </ng-container>
+                </ngb-accordion>
+            </div>
+        </div>
+    </div>
+</div>
