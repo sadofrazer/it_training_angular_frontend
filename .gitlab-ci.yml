@@ -40,7 +40,7 @@ test image:
         - curl http://it-training-bdd.cloudapps-cm.com:5005 | grep -iq "IT Training"
         - echo "Test OK"
     rules:
-        - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+        - if: ($CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event")
 
 Release all:
     stage: Push Image
