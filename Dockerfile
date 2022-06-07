@@ -1,13 +1,12 @@
-FROM node:18.3.0-alpine as angular-build
+FROM ubuntu:20.04 as angular-build
 LABEL name="Frazer SADO"
 LABEL email="sadofrazer@yahoo.fr"
+RUN apt update -y && apt install curl -y
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt install nodejs -y
+RUN node --version || apt install npm -y
 RUN npm install npm@latest -g
-RUN npm uninstall @angular-devkit/build-angular || true
-RUN npm uninstall -g @angular/cli || true
-RUN npm cache clean --force || true
-RUN npm install -g @angular/cli@latest
-RUN npm install --save-dev @angular-devkit/build-angular || true
-RUN npm install || true
+RUN npm install -g @angular/cli
 RUN mkdir /opt/angular
 WORKDIR /opt/angular
 COPY . .
