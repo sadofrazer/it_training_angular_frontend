@@ -2,9 +2,10 @@ FROM node:18.3.0-alpine as angular-build
 LABEL name="Frazer SADO"
 LABEL email="sadofrazer@yahoo.fr"
 RUN npm install npm@latest -g
+RUN npm uninstall @angular-devkit/build-angular || true
 RUN npm uninstall -g @angular/cli || true
 RUN npm cache clean --force || true
-RUN npm install -g @angular/cli@13
+RUN npm install -g @angular/cli@latest
 RUN npm install --save-dev @angular-devkit/build-angular || true
 RUN npm install || true
 RUN mkdir /opt/angular
