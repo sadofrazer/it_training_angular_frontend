@@ -8,7 +8,7 @@ stages:
 
 variables:
     IMAGE_NAME: "sadofrazer/ittraining_webapp:${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHORT_SHA}"
-    CONTAINER_NAME_FORMATION: "ittraining_webapp"
+    CONTAINER_NAME: "ittraining_webapp"
     PROD_CONTAINER_NAME: "prod_it_training_webapp"
     PRODUCTION_HOST: "34.70.85.182"
 
