@@ -5,8 +5,6 @@ LABEL email="sadofrazer@yahoo.fr"
 RUN mkdir /opt/angular
 WORKDIR /opt/angular
 COPY . .
-RUN ng update
-RUN ng build
 RUN npm install
 RUN npm run build --prod
 
