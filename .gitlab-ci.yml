@@ -23,7 +23,7 @@ build dockerhub:
       - runner-prod
     script:
         - docker build -t ${IMAGE_NAME} .
-        - docker save ${IMAGE_NAME}
+        #- docker save ${IMAGE_NAME}
 
 
 test image:
@@ -88,4 +88,4 @@ deploy Formation:
         name: webapp_prod_env
         url: "http://it-training-bdd.cloudapps-cm.com:5005"
     only:
-      - main
+      - master
