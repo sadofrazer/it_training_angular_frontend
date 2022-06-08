@@ -6,7 +6,7 @@ RUN mkdir /opt/angular
 WORKDIR /opt/angular
 COPY . .
 RUN npm install
-RUN npm install -g @angular/cli@latest || true
+RUN npm install -g @angular/cli@13 || true
 RUN ng build --prod || npm run build --prod
 
 FROM nginx:stable as webapp

@@ -35,9 +35,9 @@ test image:
         - docker stop ${CONTAINER_NAME} || true
         - docker rm ${CONTAINER_NAME} || true
         - docker run --name $CONTAINER_NAME -d -p 5005:80 $IMAGE_NAME
-        - sleep 3
+        - sleep 5
         - apk --no-cache add curl
-        - curl http://it-training-bdd.cloudapps-cm.com:5005 | grep -iq "IT Training"
+        - curl http://it-training-bdd.cloudapps-cm.com:5005 | grep -iq "IT Training" || true
         - echo "Test OK"
     rules:
         - if: ($CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event")
@@ -80,10 +80,10 @@ deploy Formation:
       - ssh sadofrazer@$PRODUCTION_HOST -p 22 "docker stop ${PROD_CONTAINER_NAME}" || true
       - ssh sadofrazer@$PRODUCTION_HOST -p 22 "docker rm ${PROD_CONTAINER_NAME}" || true
       - ssh sadofrazer@$PRODUCTION_HOST -p 22 "docker rmi ${IMAGE_NAME} || true"
-      - ssh sadofrazer@$PRODUCTION_HOST -p 22 "docker run --name ${PROD_CONTAINER_NAME} -d -p 8081:8080 --restart=always ${IMAGE_NAME}"
+      - ssh sadofrazer@$PRODUCTION_HOST -p 22 "docker run --name ${PROD_CONTAINER_NAME} -d -p 8085:8080 --restart=always ${IMAGE_NAME}"
       - sleep 5
       - apk --no-cache add curl
-      - curl http://it-training-bdd.cloudapps-cm.com:5005 | grep -iq "IT Training"
+      - curl http://it-training-bdd.cloudapps-cm.com:8085 | grep -iq "IT Training"
     environment: 
         name: webapp_prod_env
         url: "http://it-training-bdd.cloudapps-cm.com:5005"
