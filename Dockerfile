@@ -1,15 +1,13 @@
 FROM node:18.3.0-alpine as angular-build
 LABEL name="Frazer SADO"
 LABEL email="sadofrazer@yahoo.fr"
-RUN npm install npm@latest -g
-RUN npm install -g @angular/cli@13
+
 RUN mkdir /opt/angular
 WORKDIR /opt/angular
 COPY . .
-RUN ng build --prod
-RUN ls
-RUN ls
-
+RUN npm install
+RUN npm install -g @angular/cli@13 || true
+RUN ng build --prod || npm run build --prod
 
 FROM nginx:stable as webapp
 LABEL name="Frazer SADO"
