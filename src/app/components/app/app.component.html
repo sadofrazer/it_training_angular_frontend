@@ -15,46 +15,46 @@
       <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
           <ul class="navbar-nav ms-5" id="megamenu">
               <li class="nav-item active">
-                  <a class="nav-link h5  me-3 p-3" [routerLink]="'/accueil'" (click)="isMenuCollapsed = true">
+                  <a class="nav-link h6  me-3 p-3" [routerLink]="'/accueil'" (click)="isMenuCollapsed = true">
                       Accueil
                   </a>
               </li>
               <li class="nav-item dropdown">
-                  <a class="nav-link  dropdown-toggle h5 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'/formation'"  (click)="isMenuCollapsed = true">
+                  <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'/formation'"  (click)="isMenuCollapsed = true">
                       Formations
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
-                    <li *ngFor="let t of $themes | async "><a class="dropdown-item fs-4" [routerLink]="'/formation/lister/'+t.idTheme"> {{ t.nom }} </a></li>
+                    <li *ngFor="let t of $themes | async "><a class="dropdown-item fs-6" [routerLink]="'/formation/lister/'+t.idTheme"> {{ t.nom }} </a></li>
                   </ul>
               </li>
               <li class="nav-item">
-                  <a class="nav-link h5 me-3 p-3" [routerLink]="'certification'" (click)="isMenuCollapsed = true">
+                  <a class="nav-link h6 me-3 p-3" [routerLink]="'certification'" (click)="isMenuCollapsed = true">
                       Certifications
                   </a>                   
               </li>
               <li class="nav-item">
-                <a class="nav-link h5 me-3 p-3" [routerLink]="'certification'" (click)="isMenuCollapsed = true">
+                <a class="nav-link h6 me-3 p-3" [routerLink]="'certification'" (click)="isMenuCollapsed = true">
                     Financement / CPF
                 </a>                   
               </li>
               <li class="nav-item ">
-                <a class="nav-link h5 me-3 p-3" [routerLink]="'contact'" (click)="isMenuCollapsed = true">
+                <a class="nav-link h6 me-3 p-3" [routerLink]="'contact'" (click)="isMenuCollapsed = true">
                     Contact
                 </a>                   
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link  dropdown-toggle h5 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'accueil'"  (click)="isMenuCollapsed = true">
+                <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'accueil'"  (click)="isMenuCollapsed = true">
                     Administration
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item fs-4" href="#"> Gestion des formations </a></li>
-                  <li><a class="dropdown-item fs-4" href="#"> Submenu item 2 </a></li>
-                  <li><a class="dropdown-item fs-4" href="#"> Submenu item 3 </a></li>
+                <ul class="dropdown-menu dropdown-menu-dark fs-6">
+                  <li><a class="dropdown-item " href="#"> Gestion des formations </a></li>
+                  <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
+                  <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li>
                 </ul>
             </li>
           </ul>
           <form class="d-flex ms-5" role="search">
-            <input class="form-control ms-5 me-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control ms-5 me-2 vh-5" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
       </div>
@@ -64,3 +64,31 @@
   <!-- Balise qui s'utilise avec le router module -->
   <app-accueil *ngIf=""></app-accueil>
   <router-outlet></router-outlet>
+
+
+
+<!-- Footer -->
+<footer class="text-center text-white" style="background-color: #0a4275;">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: CTA -->
+    <section class="">
+      <p class="d-flex justify-content-center align-items-center">
+        <span class="me-3">Register for free</span>
+        <button mdbRipple type="button" class="btn btn-outline-light btn-rounded">
+          Sign up!
+        </button>
+      </p>
+    </section>
+    <!-- Section: CTA -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->

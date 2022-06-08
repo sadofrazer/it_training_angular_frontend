@@ -7,7 +7,7 @@ import { ListFormationComponent } from './components/list-formation/list-formati
 
 const routes: Routes = [ 
 {path: 'lister/:id', component: ListByThemeComponent},
-{path: 'details', component: DetailFormationComponent},
+{path: 'details/:id', component: DetailFormationComponent},
 {path: 'creer', component: CreateUpdateFormationComponent},
 {path: '**', component: ListFormationComponent}
 ];
