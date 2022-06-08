@@ -1,4 +1,4 @@
-FROM node:18.0.3-alpine as angular-build
+FROM node:18.3.0-alpine as angular-build
 LABEL name="Frazer SADO"
 LABEL email="sadofrazer@yahoo.fr"
 
