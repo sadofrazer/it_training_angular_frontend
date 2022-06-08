@@ -1,17 +1,14 @@
-FROM ubuntu:20.04 as angular-build
+FROM node:18.0.3-alpine as angular-build
 LABEL name="Frazer SADO"
 LABEL email="sadofrazer@yahoo.fr"
-RUN apt update -y && apt install curl -y
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
-RUN apt install nodejs -y
-RUN node --version || apt install npm -y
-RUN npm install npm@latest -g
-RUN npm install -g @angular/cli
+
 RUN mkdir /opt/angular
 WORKDIR /opt/angular
 COPY . .
 RUN ng update
 RUN ng build
+RUN npm install
+RUN npm run build --prod
 
 FROM nginx:stable as webapp
 LABEL name="Frazer SADO"
