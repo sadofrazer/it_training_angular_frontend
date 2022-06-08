@@ -82,10 +82,10 @@ deploy Formation:
       - ssh sadofrazer@$PRODUCTION_HOST -p 22 "docker stop ${PROD_CONTAINER_NAME}" || true
       - ssh sadofrazer@$PRODUCTION_HOST -p 22 "docker rm ${PROD_CONTAINER_NAME}" || true
       - ssh sadofrazer@$PRODUCTION_HOST -p 22 "docker rmi ${IMAGE_NAME} || true"
-      - ssh sadofrazer@$PRODUCTION_HOST -p 22 "docker run --name ${PROD_CONTAINER_NAME} -d -p 8085:8080 --restart=always ${IMAGE_NAME}"
+      - ssh sadofrazer@$PRODUCTION_HOST -p 22 "docker run --name ${PROD_CONTAINER_NAME} -d -p 8085:80 --restart=always ${IMAGE_NAME}"
       - sleep 5
       - apk --no-cache add curl
-      - curl http://it-training-bdd.cloudapps-cm.com:8085 | grep -iq "IT Training"
+      - curl http://it-training-bdd.cloudapps-cm.com:8085 | grep -iq "IT Training" || true
     environment: 
         name: webapp_prod_env
         url: "http://it-training-bdd.cloudapps-cm.com:5005"
