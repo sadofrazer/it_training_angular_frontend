@@ -39,6 +39,8 @@ test image:
         - apk --no-cache add curl
         - curl http://it-training-bdd.cloudapps-cm.com:5005 | grep -iq "IT Training" || true
         - echo "Test OK"
+        - docker stop ${CONTAINER_NAME} || true
+        - docker rm ${CONTAINER_NAME} || true
     rules:
         - if: ($CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event")
 
