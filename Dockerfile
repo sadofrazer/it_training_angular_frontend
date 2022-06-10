@@ -13,3 +13,4 @@ FROM nginx:stable as webapp
 LABEL name="Frazer SADO"
 LABEL email="sadofrazer@yahoo.fr"
 COPY --from=angular-build /opt/angular/dist/angular-front-end /usr/share/nginx/html
+COPY --from=angular-build /opt/angular/default.conf /etc/nginx/conf.d/default.conf
