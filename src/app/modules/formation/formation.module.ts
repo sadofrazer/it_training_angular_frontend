@@ -3,24 +3,25 @@ import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormationRoutingModule } from './formation-routing.module';
 import { ListFormationComponent } from './components/list-formation/list-formation.component';
-import { CreateUpdateFormationComponent } from './components/create-update-formation/create-update-formation.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ListByThemeComponent } from './components/list-by-theme/list-by-theme.component';
 import { DetailFormationComponent } from './components/detail-formation/detail-formation.component';
-
+import { GestionFormationComponent } from './components/gestion-formation/gestion-formation.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     ListFormationComponent,
-    CreateUpdateFormationComponent,
     ListByThemeComponent,
-    DetailFormationComponent
+    DetailFormationComponent,
+    GestionFormationComponent
   ],
   imports: [
     CommonModule,
     FormationRoutingModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ]
 })
 export class FormationModule { }

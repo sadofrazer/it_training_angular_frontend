@@ -7,7 +7,6 @@ import { Theme } from 'src/app/entities/Formation/theme';
 import { FormationService } from '../../services/formation.service';
 import { SthemeService } from '../../services/stheme.service';
 import { ThemeService } from '../../services/theme.service';
-import {NgbPanelChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-list-formation',
@@ -17,7 +16,7 @@ import {NgbPanelChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 export class ListFormationComponent implements OnInit {
   private id : number;
   public sthemes$: Observable<Stheme[]>;
-  public formation$ : Observable<Formation[]>;
+  public formations$ : Observable<Formation[]>;
   public themes$ : Observable<Theme[]>;
   constructor(private themeService:ThemeService, private formationService:FormationService, private sthemeService: SthemeService, private activatedRoute: ActivatedRoute,private router: Router) { }
 
@@ -26,7 +25,7 @@ export class ListFormationComponent implements OnInit {
     this.id = stringId? parseInt(stringId):0;
     this.themes$=this.themeService.getAllThemes();
     this.sthemes$=this.sthemeService.getAllSthemes();
-    this.formation$=this.formationService.getAllFormations();
+    this.formations$=this.formationService.getAllFormations();
   }
 
 }
