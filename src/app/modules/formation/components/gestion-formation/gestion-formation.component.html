@@ -66,7 +66,26 @@
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="row g-1  bg-dark p-3 text-white">
-
+                        <table class="table table-striped table-hover table-dark ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Code</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Nbre Jours</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let f of formations$ |async">
+                                <tr (click)="clickForm(f.idFormation)">
+                                    <th scope="row" class="align-middle"><a [routerLink]="'/formation/gestion/'+f.idFormation">{{ f.codeFormation }}</a></th>
+                                    <td class="align-middle"> {{ f.nom }}</td>
+                                    <td class="align-middle">{{ f.description }}</td>
+                                    <td class="align-middle"><span class="badge bg-primary rounded-pill">{{ f.nbreJrs| number }}</span></td>
+                                    <td class="align-middle"><button class="btn btn-danger btn-sm">Supprimer</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </ng-template>
               </ngb-panel>
