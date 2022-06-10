@@ -28,18 +28,20 @@ export class FormationService {
   public getFormById(id:number) : Observable<Formation>{
     return this.http.get<Formation>(`${FormationService._apiUrl}/${id}`);
   }
-  public addFormation(f:Formation) : Observable<Formation>{
-    const body=JSON.stringify(f);
-    return this.http.post<Formation>(`${FormationService._apiUrl}`,body).pipe(
+
+  public addFormation(f: Formation) : Observable<Formation>{
+    console.log("execute add")
+    return this.http.post<Formation>(`${FormationService._apiUrl}`,f).pipe(
       catchError(this.handleError)
     );
   }
 
-  public editFormation(f:Formation) : Observable<Formation>{
-    return this.http.put<Formation>(`${FormationService._apiUrl}`,f).pipe(
+  public editFormation(id:number, f:Formation) : Observable<Formation>{
+    return this.http.put<Formation>(`${FormationService._apiUrl}/${id}`,f).pipe(
       catchError(this.handleError)
     );
   }
+
   public searchFormByWord(word : string) : Observable<Formation[]>{
     return this.http.get<Formation[]>(`${FormationService._apiUrl}/search?word=${word}`).pipe(
       catchError(this.handleError)

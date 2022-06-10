@@ -25,6 +25,7 @@ export class GestionFormationComponent implements OnInit {
   constructor(private sthemeService: SthemeService, private formationService:FormationService, private activatedRoute: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     const stringId: string = this.activatedRoute.snapshot.paramMap.get('id');
     this.id = stringId? parseInt(stringId):0;
     this.formations$=this.formationService.getAllFormations();
@@ -76,11 +77,21 @@ export class GestionFormationComponent implements OnInit {
   public addFormation() : void{
     if(this.isCreation){
       this.formation.idFormation=0;
-      this.formationService.addFormation(this.formation);
-      console.log("creation")
+      this.formationService.addFormation(this.formation).subscribe((f: Formation)=>{
+        this.formation=f;
+        this.router.navigate(['/formation/gestion/'+this.formation.idFormation]);
+      });
+      
     }else{
-      this.formationService.editFormation(this.formation);
+      this.formationService.editFormation(this.id, this.formation).subscribe((f:Formation)=>{
+        this.formation=f;
+        this.router.navigate(['/formation/gestion/'+(this.id>0? this.id:1)]);
+      });
     }
+  }
+
+  public clickForm(id : number){
+    this.router.navigate(['/formation/gestion/'+(this.id>0? this.id:1)]);
   }
 
 }
