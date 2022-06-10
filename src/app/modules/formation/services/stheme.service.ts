@@ -22,5 +22,11 @@ export class SthemeService {
     return this.http.get<Stheme[]>(`${SthemeService._apiUrl}/theme/${id}`);
   }
 
+  public getSthemeById(id:number) : Observable<Stheme>{
+    return this.http.get<Stheme>(`${SthemeService._apiUrl}/${id}`);
+  }
 
+  public getSthemeByCode(code : string) : Observable<Stheme>{
+    return this.http.get<Stheme>(`${SthemeService._apiUrl}/search?code=${code}`);
+  }
 }

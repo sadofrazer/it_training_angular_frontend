@@ -4,7 +4,7 @@
   <!--  -->
   <div class="container-fluid d-flex align-items-center">
       <!-- RouterLink va généré pour nous l'attribut href -->
-      <a class="navbar-brand me-5 ps-5" [routerLink]="'/accueil'"><span class="h3 me-5">IT Training</span></a>
+      <a class="navbar-brand me-5 ps-5"   [routerLink]="'/accueil'"><span class="h3 me-5">IT Training</span></a>
 
       <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
       <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
@@ -43,18 +43,21 @@
                 </a>                   
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'accueil'"  (click)="isMenuCollapsed = true">
+                <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'/gestion'"  (click)="isMenuCollapsed = true">
                     Administration
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark fs-6">
-                  <li><a class="dropdown-item " href="#"> Gestion des formations </a></li>
-                  <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
-                  <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li>
+                  <li><a class="dropdown-item "  [routerLink]="'/formation/gestion'"> Gestion des formations </a></li>
+                  <li><a class="dropdown-item" href="#"> Gestion des salles </a></li>
+                  <li><a class="dropdown-item" href="#">Gestion des sessions  </a></li>
+                  <li><a class="dropdown-item" href="#">Gestion des sessions  </a></li>
+                  <li><a class="dropdown-item" href="#">Gestion des inscriptions  </a></li>
+                  <li><a class="dropdown-item" href="#">Gestion des évaluations  </a></li>
                 </ul>
             </li>
           </ul>
           <form class="d-flex ms-5" role="search">
-            <input class="form-control ms-5 me-2 vh-5" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control ms-5 me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
       </div>
@@ -86,8 +89,8 @@
 
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2020 Copyright:
-    <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    © 2020 Copyright :
+    <a class="text-white" href="http://it-training-bdd.cloudapps-cm.com:8085/">IT Training</a>
   </div>
   <!-- Copyright -->
 </footer>

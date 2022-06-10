@@ -1,4 +1,4 @@
-<div class="container-fluid p-3 ">
+<div class="container-fluid p-3 bg-image">
     <div class="row justify-content-center list">
         <div class="container w-100">
             <div class="card mb-5 mt-3" *ngFor="let t of themes$ | async">
@@ -22,12 +22,12 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody *ngFor="let f of formation$ |async">
+                                        <tbody *ngFor="let f of formations$ |async">
                                             <tr *ngIf="f.stheme.idStheme==s.idStheme">
-                                                <th scope="row" class="align-middle"><a href="">{{ f.codeFormation }}</a></th>
+                                                <th scope="row" class="align-middle"><a [routerLink]="'/formation/details/'+f.idFormation">{{ f.codeFormation }}</a></th>
                                                 <td class="align-middle"> {{ f.nom }}</td>
                                                 <td class="align-middle">{{ f.description }}</td>
-                                                <td class="align-middle"><span class="badge bg-primary rounded-pill fs-5">{{ f.nbreJrs| number }}</span></td>
+                                                <td class="align-middle"><span class="badge bg-primary rounded-pill fs-6">{{ f.nbreJrs| number }}</span></td>
                                                 <td class="align-middle"><button class="btn btn-success" [routerLink]="'/formation/details/'+f.idFormation">S'inscrire</button></td>
                                             </tr>
                                         </tbody>
