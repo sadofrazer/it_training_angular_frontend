@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListByThemeComponent } from './list-by-theme.component';
 
-describe('ListByThemeComponent', () => {
+describe('ListFormationComponent', () => {
   let component: ListByThemeComponent;
   let fixture: ComponentFixture<ListByThemeComponent>;
 

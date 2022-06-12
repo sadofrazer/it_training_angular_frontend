@@ -1,6 +1,6 @@
 
 <!-- Utilisation des classes bootstrap pour le menu -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light  p-3 bg-light navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-light  p-3 bg-light navbar-dark bg-dark w-100">
   <!--  -->
   <div class="container-fluid d-flex align-items-center">
       <!-- RouterLink va généré pour nous l'attribut href -->
@@ -20,10 +20,11 @@
                   </a>
               </li>
               <li class="nav-item dropdown">
-                  <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'/formation'"  (click)="isMenuCollapsed = true">
+                  <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'/formation/catalogue'"  (click)="isMenuCollapsed = true">
                       Formations
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item fs-6" [routerLink]="'/formation/theme/list'">Formations par Thème</a></li>
                     <li *ngFor="let t of $themes | async "><a class="dropdown-item fs-6" [routerLink]="'/formation/lister/'+t.idTheme"> {{ t.nom }} </a></li>
                   </ul>
               </li>
@@ -43,26 +44,26 @@
                 </a>                   
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'/gestion'"  (click)="isMenuCollapsed = true">
+                <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'#'"  (click)="isMenuCollapsed = true">
                     Administration
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark fs-6">
-                  <li><a class="dropdown-item "  [routerLink]="'/formation/gestion'"> Gestion des formations </a></li>
-                  <li><a class="dropdown-item" href="#"> Gestion des salles </a></li>
-                  <li><a class="dropdown-item" href="#">Gestion des sessions  </a></li>
-                  <li><a class="dropdown-item" href="#">Gestion des sessions  </a></li>
-                  <li><a class="dropdown-item" href="#">Gestion des inscriptions  </a></li>
-                  <li><a class="dropdown-item" href="#">Gestion des évaluations  </a></li>
+                  <li><a class="dropdown-item "  [routerLink]="'/formation/gestion/catalogue'">Gestion du catalogue</a></li>
+                  <li><a class="dropdown-item" href="#">Gestion de la planification</a></li>
+                  <li><a class="dropdown-item" href="#">Gestion de la logistique</a></li>
                 </ul>
             </li>
           </ul>
-          <form class="d-flex ms-5" role="search">
-            <input class="form-control ms-5 me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+          <form  (ngSubmit)="getSearchWord()" class="d-flex ms-5" role="search">
+            <input class="form-control ms-5 me-2" type="search" placeholder="Rechercher des formations" aria-label="Search" name="search" [(ngModel)]="word">
+            <button class="btn btn-outline-success" type="submit">Rechercher</button>
           </form>
       </div>
   </div>
 </nav>
+
+
+
 <!-- Container bootstrap -->
   <!-- Balise qui s'utilise avec le router module -->
   <app-accueil *ngIf=""></app-accueil>

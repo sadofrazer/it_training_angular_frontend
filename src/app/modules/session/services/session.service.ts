@@ -50,7 +50,6 @@ export class SessionService {
   }
 
 
-
   public getSessionById(id:number) : Observable<Session>{
     return this.http.get<Session>(`${SessionService._apiUrl}/${id}`).pipe(
       catchError(this.handleError)

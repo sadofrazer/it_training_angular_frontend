@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListFormationComponent } from './list-formation.component';
+import { ListBySthemeComponent } from './list-by-stheme.component';
 
-describe('ListFormationComponent', () => {
-  let component: ListFormationComponent;
-  let fixture: ComponentFixture<ListFormationComponent>;
+describe('ListByThemeComponent', () => {
+  let component: ListBySthemeComponent;
+  let fixture: ComponentFixture<ListBySthemeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListFormationComponent ]
+      declarations: [ ListBySthemeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListFormationComponent);
+    fixture = TestBed.createComponent(ListBySthemeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
