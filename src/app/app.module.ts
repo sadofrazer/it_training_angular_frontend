@@ -9,6 +9,7 @@ import { AppComponent } from './components/app/app.component';
 import { CoreModule } from './modules/core/core.module';
 import { FormationModule } from './modules/formation/formation.module';
 import { FormationService } from './modules/formation/services/formation.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormationService } from './modules/formation/services/formation.service
     AppRoutingModule,
     NgbModule,
     CoreModule,
-    FormationModule
+    FormationModule,
+    FormsModule
   ],
   exports: [
     AccueilComponent

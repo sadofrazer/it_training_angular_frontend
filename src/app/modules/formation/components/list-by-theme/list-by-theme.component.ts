@@ -1,40 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Formation } from 'src/app/entities/Formation/formation';
 import { Stheme } from 'src/app/entities/Formation/sous-theme';
+import { Theme } from 'src/app/entities/Formation/theme';
+import { SearchService } from 'src/app/services/search.service';
 import { FormationService } from '../../services/formation.service';
 import { SthemeService } from '../../services/stheme.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
-  selector: 'app-list-by-theme',
+  selector: 'app-list-formation',
   templateUrl: './list-by-theme.component.html',
   styleUrls: ['./list-by-theme.component.scss']
 })
 export class ListByThemeComponent implements OnInit {
-  private id : number;
-  public sthemes$: Observable<Stheme[]>;
-  public formation$ : Observable<Formation[]>;
 
-  constructor(private formationService:FormationService, private sthemeService: SthemeService, private activatedRoute: ActivatedRoute,private router: Router) { }
+  public sthemes$: Observable<Stheme[]>;
+  public formations$ : Observable<Formation[]>;
+  public themes$ : Observable<Theme[]>;
+  constructor(private themeService:ThemeService, private formationService:FormationService, 
+    private sthemeService: SthemeService, private activatedRoute: ActivatedRoute,private router: Router,
+    private searchService:SearchService) { }
 
   ngOnInit(): void {
-    const stringId: string = this.activatedRoute.snapshot.paramMap.get('id');
-    this.id = stringId? parseInt(stringId):0;
-    this.sthemes$=this.sthemeService.getSthemeByTheme(this.id);
-    this.formation$=this.formationService.getFormByTheme(this.id);
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-  }
-
-  public listSthemeByTheme(): void{
-    this.sthemes$=this.sthemeService.getSthemeByTheme(this.id);
-    this.formation$=this.formationService.getFormByTheme(this.id);
-    this.router.navigate([`/formation/lister/${this.id}`]);
-  }
-
-  public listFormByStheme(): Observable<Formation[]> {
-    return this.formationService.getFormByStheme(this.id);
-    
+    this.themes$=this.themeService.getAllThemes();
+    this.sthemes$=this.sthemeService.getAllSthemes();
+    this.formations$=this.formationService.getAllFormations();
   }
 
 }

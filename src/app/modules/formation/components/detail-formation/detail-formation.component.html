@@ -1,21 +1,29 @@
-<div class="container-fluid p-3">
-    <div class="container mt-4">
-        <div class="card mb-3" *ngIf=" formation$|async as f ">
-            <div class="row ">
-                <div class="col-md-3 p-0">
-                    <img src="../../../../../assets/img/hero_1.jpg" class="img w-100 rounded-start ms-4 mt-3 me-5" alt="...">
+<div class="container-fluid pb-5">
+    <div class="row d-flex justify-content-center align-items-center" *ngIf=" formation$|async as f ">
+        <div class="text-center mt-3 mb-3">
+            <span class="text-uppercase text-wrap fs-4 own-title">
+                DETAILS SUR LA FORMATION  <span class="fst-italic">" {{f.nom}} "</span>
+            </span>
+        </div>
+    </div>
+    <div class="container p-0 bg-primary" *ngIf=" formation$|async as f ">
+        <div class="card">
+            <div class="row container p-0 m-0 titre">
+                <div class="col-md-3 p-0 d-flex align-items-center">
+                    <img [src]="'../../../../../assets/img/formations/'+f.codeFormation+'.jpg'" 
+                    onerror="this.src='https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'" class="img w-100 rounded me-5" alt="...">
                 </div>
                 <div class="col-md-8 ms-3 position-relative">
                     <div class="card-body">
-                    <h4 class="card-title">{{ f.codeFormation}}</h4>
+                    <h4 class="card-title own-text">{{ f.codeFormation}}</h4>
                     <h4 class="card-title">{{ f.nom }}</h4>
-                    <button class="fst-italic badge btn-success text-wrap p-2 fs-6 mt-3 position-absolute bottom-10 end-0 me-5">&#9733; <b>S'inscrire</b></button>
-                    <p class="card-text position-absolute bottom-0 start-20  mb-1"><small class="fst-italic badge bg-primary text-wrap p-2 ">Durée : {{ f.nbreJrs }} Jours</small></p>
+                    <button class="fst-italic badge btn-success text-wrap p-2 fs-6 mt-3 mb-2">&#9733; <b>S'inscrire</b></button>
+                    <p class="card-text"><small class="fst-italic badge bg-primary text-wrap fs-5  p-2 ">Durée : {{ f.nbreJrs }} {{f.nbreJrs>1? 'Jours':'Jour'}}</small></p>
                     </div>
                 </div>
             </div>
-            <div class="row d-flex justify-content-center mt-5 mb-5">
-                <div class="col-md-10 me-5 mb-4">
+            <div class="row d-flex justify-content-center mt-4 mb-5">
+                <div class="col-md-10 mb-4">
                     <ngb-accordion  [closeOthers]="true" activeIds="static-1, static-2, static-3">
                         <ngb-panel id="static-1">
                             <ng-template ngbPanelTitle>
@@ -33,7 +41,7 @@
                           </ngb-panel>
                     </ngb-accordion>
                 </div>
-                <div class="col-md-5 me-5">
+                <div class="col-md-5">
                     <ngb-accordion [closeOthers]="true" activeIds="static-2">
                         <ngb-panel id="static-2">
                             <ng-template ngbPanelTitle>

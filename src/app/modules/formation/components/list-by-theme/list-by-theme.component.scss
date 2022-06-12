@@ -1,10 +1,21 @@
-.container-fluid{
-    background: url(../../../../../assets/img/background-list-form.jpg);
+.full{
+    background: url(../../../../../assets/img/background-list-form.jpg) no-repeat center;
     background-size: cover;
     min-height: 100vh;
+    padding: 0px;
+}
+
+.card-header{
+    background-color: #0275d8;
+    margin-top: 0;
 }
 
 .list{
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.nb{
+    width: 10%;
+    text-align: center;
 }

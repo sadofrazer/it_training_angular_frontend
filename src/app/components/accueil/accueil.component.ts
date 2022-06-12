@@ -11,11 +11,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./accueil.component.scss']
 })
 export class AccueilComponent implements OnInit {
-  public $formations: Observable<Formation[]>;
+  public formations$: Observable<Formation[]>;
   constructor( private formationService: FormationService, private activatedRoute: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
-    this.$formations=this.formationService.getAllFormations();
+    this.formations$=this.formationService.getAllFormations();
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 

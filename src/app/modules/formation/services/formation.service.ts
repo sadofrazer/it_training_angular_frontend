@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Formation } from 'src/app/entities/Formation/formation';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { map } from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +12,13 @@ export class FormationService {
   constructor( private http: HttpClient) { }
   private static readonly _apiUrl = `http://it-training-bdd.cloudapps-cm.com:8081/FormationRestApi/rest/formation`;
 
+
+
   public getAllFormations(): Observable<Formation[]>{
     return this.http.get<Formation[]>(`${FormationService._apiUrl}`);
   }
+
+
 
   public getFormByStheme(id:number) : Observable<Formation[]>{
     return this.http.get<Formation[]>(`${FormationService._apiUrl}/stheme/${id}`);
@@ -25,9 +28,13 @@ export class FormationService {
     return this.http.get<Formation[]>(`${FormationService._apiUrl}/theme/${id}`);
   }
 
+
+
   public getFormById(id:number) : Observable<Formation>{
     return this.http.get<Formation>(`${FormationService._apiUrl}/${id}`);
   }
+
+
 
   public addFormation(f: Formation) : Observable<Formation>{
     console.log("execute add")
@@ -36,17 +43,31 @@ export class FormationService {
     );
   }
 
+
+
   public editFormation(id:number, f:Formation) : Observable<Formation>{
     return this.http.put<Formation>(`${FormationService._apiUrl}/${id}`,f).pipe(
       catchError(this.handleError)
     );
   }
 
+
+
   public searchFormByWord(word : string) : Observable<Formation[]>{
     return this.http.get<Formation[]>(`${FormationService._apiUrl}/search?word=${word}`).pipe(
       catchError(this.handleError)
     );
   }
+
+
+
+  public deleteForm(id:number): Observable<boolean>{
+    return this.http.delete<boolean>(`${FormationService._apiUrl}/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
 
 
   private handleError(error: HttpErrorResponse) {
@@ -62,4 +83,6 @@ export class FormationService {
     // Return an observable with a user-facing error message.
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
+
+
 }
