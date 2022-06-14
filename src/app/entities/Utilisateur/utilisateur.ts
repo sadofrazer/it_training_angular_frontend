@@ -29,6 +29,6 @@ export class Formateur extends Utilisateur{
 
 export class TypeUSer{
     public idType : number;
-    public nom : String;
-    public description : String;
+    public nom : string;
+    public description : string;
 }
