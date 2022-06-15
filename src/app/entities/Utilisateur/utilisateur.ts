@@ -1,34 +1,58 @@
+import { TypeUser } from "./typeuser";
+
 
 export class Utilisateur{
-    public idUtilisateur : number;
-    public codeUser : string;
-    public nom : string;
-    public prenom : string;
-    public email : string;
-    public telephone : string;
-    public societe : string;
-    public dateNaiss : Date;
-    public numeroSiret : string;
-    public statut : string;
-    public login : string;
-    public password : string;
-    public typeUser : TypeUSer;
-}
+   idUtilisateur: number ;
+    codeUser: string;
+    nom: string;
+    prenom: string;
+    telephone: string;
+    email: string;
+    adresse: string;
+    dateNaiss: Date;
+    numeroSiret: string;
+    login: string;
+    password: string;
+    picture: string;
+    societe: string;
+    statut: string;
+    
+    typeuser: TypeUser
+ 
 
-export class Responsable extends Utilisateur{
-    public fonction : String;
+constructor(
+   
+    codeUser: string = "",
+    nom: string = "",
+    prenom: string ="",
+    telephone: string ="",
+    email: string = "",
+    adresse: string = "",
+    dateNaiss: Date = new Date,
+    numeroSiret: string = "",
+    login: string ="",
+    password: string ="",
+    societe: string ="",
+    statut: string="",
+   
+   // picture: string = "/assets/Images/utilisateur.png",
+    
+){
+    
+    this.codeUser = codeUser;
+    this.nom = nom;
+    this.prenom = prenom;
+    this.telephone = telephone;
+    this.email = email;
+    this.adresse =adresse;
+    this.dateNaiss = dateNaiss;
+    this.numeroSiret = numeroSiret;
+    this.login = login;
+    this.password = password;
+    this.societe = societe;
+    this.statut = statut;
+  //  this.picture = picture
+   
+   
 }
-
-export class Apprenant extends Utilisateur{
-    public dernierDiplome : String;
-}
-
-export class Formateur extends Utilisateur{
-    public certifications : String
-}
-
-export class TypeUSer{
-    public idType : number;
-    public nom : String;
-    public description : String;
 }

@@ -1,0 +1,123 @@
+import { Injectable } from '@angular/core';
+import { catchError, Observable, tap, of } from 'rxjs';
+import { Utilisateur } from './utilisateur';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {  TypeUser } from './typeuser';
+import { Apprenant } from './Apprenant';
+import { Formateur } from './Formateur';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+//http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/utilisateur
+export class UtilisateurService {
+
+  constructor (private http: HttpClient){
+
+   }
+   getUtilisateurList(): Observable<Utilisateur[]>{
+    return this.http.get<Utilisateur[]>('http://localhost:8080/UtilisateurRestApi/rest/utilisateurs').pipe(
+     tap((respose)=> this.log(respose)),
+     catchError((error)=> this.mesErrors(error,[]))
+    );
+   }
+   getApprenantList(): Observable<Utilisateur[]>{
+    return this.http.get<Utilisateur[]>('http://localhost:8080/UtilisateurRestApi/rest/apprenants').pipe(
+     tap((respose)=> this.log(respose)),
+     catchError((error)=> this.mesErrors(error,[]))
+    );
+   }
+   getAdminList(): Observable<Utilisateur[]>{
+    return this.http.get<Utilisateur[]>('http://localhost:8080/UtilisateurRestApi/rest/responsables').pipe(
+     tap((respose)=> this.log(respose)),
+     catchError((error)=> this.mesErrors(error,[]))
+    );
+   }
+   getFormateurtList(): Observable<Utilisateur[]>{
+    return this.http.get<Utilisateur[]>('http://localhost:8080/UtilisateurRestApi/rest/formateurs').pipe(
+     tap((respose)=> this.log(respose)),
+     catchError((error)=> this.mesErrors(error,[]))
+    );
+   }
+   getUtilisateurById(utilisateurId: number): Observable<Utilisateur|undefined>{
+    return this.http.get<Utilisateur>(`http://localhost:8080/UtilisateurRestApi/rest/utilisateurs/${utilisateurId}`).pipe(
+      tap((respose)=> this.log(respose)),
+      catchError((error)=> this.mesErrors(error,undefined))
+      );
+  }
+  updateUtilisateur(utilisateur: Utilisateur): Observable<null>{
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+
+    return this.http.put('http://localhost:8080/UtilisateurRestApi/rest/utilisateurs', utilisateur, httpOptions).pipe(
+      tap((respose)=> this.log(respose)),
+      catchError((error)=> this.mesErrors(error,null))
+      );
+    
+  }
+  updateApprenant(apprenant: Apprenant): Observable<null>{
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+
+    return this.http.put('http://localhost:8080/UtilisateurRestApi/rest/utilisateurs', apprenant, httpOptions).pipe(
+      tap((respose)=> this.log(respose)),
+      catchError((error)=> this.mesErrors(error,null))
+      );
+    
+  }
+  deleteUtilisateurById(utilisateurId: number): Observable<null>{
+     return this.http.delete(`http://localhost:8080/UtilisateurRestApi/rest/utilisateurs/${utilisateurId}`).pipe(
+      tap((respose)=> this.log(respose)),
+      catchError((error)=> this.mesErrors(error,null))
+      );
+     
+  }
+  addUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur>{
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+
+    return this.http.post<Utilisateur>(`http://localhost:8080/UtilisateurRestApi/rest/utilisateurs`, utilisateur, httpOptions).pipe(
+      tap((respose)=> this.log(respose)),
+      catchError((error)=> this.mesErrors(error,null))
+      );
+    
+  }
+  
+  searchUtilasteurList(term: string): Observable<Utilisateur[]>{
+    if(term.length <=1){
+      return of ([]);
+    }
+    return this.http.get<Utilisateur[]>(`http://localhost:8080/UtilisateurRestApi/rest/utilisateurs/?nom=${term}`).pipe(
+      tap((respose)=> this.log(respose)),
+      catchError((error)=> this.mesErrors(error, []))
+      );
+  }
+  // methode de foctorisaton du code utilisable juste ici
+  private log(respose:any){
+   console.table(respose);
+  }
+private mesErrors(error: Error, errorValue: any){
+  console.error(error);
+  return of(errorValue);
+}
+ /* on retoune un constante synchone 
+  getUtilisateurList(): Utilisateur[]{
+    return UtilisateurS;
+  }*/
+/* pareille ^
+  getUtilisateurById(UtilisateurId: number): Utilisateur|undefined{
+    return UtilisateurS.find(Utilisateur => Utilisateur.id == UtilisateurId);
+  }*/
+
+  getUtilisateurTypeList(): Observable<TypeUser[]>{
+  
+    return this.http.get<TypeUser[]>(`http://localhost:8080/UtilisateurRestApi/rest/typeuser`).pipe(
+      tap((respose)=> this.log(respose)),
+      catchError((error)=> this.mesErrors(error, []))
+      );
+  }
+}

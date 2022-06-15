@@ -1,0 +1,49 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<div *ngIf="utilisateur" class="row">
+    <div class="col s12 m8 offset-m2">
+    <h2 class="header center">{{ utilisateur.nom }}</h2>
+    <div class="card horizontal hoverable">
+     
+      <div class="card-stacked">
+        <div class="card-content">
+          <table class="bordered striped">
+            <tbody>
+             <tr (click)="goToUtilisateurList()">
+                <td>Nom</td>
+               <td><strong>{{ utilisateur.nom | uppercase}}</strong></td>
+              </tr>
+              <tr>
+                <td>Prenom</td>
+                <td><strong>{{ utilisateur.prenom }}</strong></td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td><strong>{{ utilisateur.email }}</strong></td>
+              </tr>
+              <tr>
+                <tr>
+                  <td>Date de naissance</td>
+                  <td><strong>{{ utilisateur.dateNaiss | date  }}</strong></td>
+                </tr>
+                <tr *ngIf="utilisateur.typeuser">
+                <td >Type Utilisateur</td>
+                <td>
+                 {{utilisateur.typeuser.nom}}
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div class="card-action">
+          <a (click)="goToUtilisateurList()">Retour</a>
+          <a (click)="goToEditUtilisateur(utilisateur)">Modifier</a>
+          <a (click)="deleteUtilisateur(utilisateur)">Supprimer</a>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <h4 *ngIf='!utilisateur' class="center"><app-loder></app-loder></h4>

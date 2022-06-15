@@ -1,0 +1,28 @@
+
+    <app-search-utilisateur></app-search-utilisateur>
+    <button (click)="all()">all</button>
+    <button (click)="app()">Apprenants</button>
+    <button (click)="resp()">Admins</button>
+    <button (click)="form()">Formateurs</button>
+
+    <table class="table col s12 m8 offset-m2">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Societe</th>
+          <th scope="col">Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let utilisateur of utilisateurList" (click)="goToUtilisateur(utilisateur)"   >
+          <td>{{utilisateur.nom}}</td>
+          <td>{{utilisateur.prenom}}</td>
+          <th scope="row">{{utilisateur.societe}}</th>
+          <td>{{utilisateur.typeuser.nom}}</td>
+        </tr>
+      </tbody>
+    </table>
+     <a class="btn-floating btn-large waves-effect waves-light red z-depth-3" 
+    style="position: fixed; bottom: 25px; right: 25px;"
+    routerLink="/utilisateur/ajout">+</a>
