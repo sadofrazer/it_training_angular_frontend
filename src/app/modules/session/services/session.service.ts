@@ -43,7 +43,7 @@ export class SessionService {
   }
 
 
-  public SessionForm(id:number): Observable<boolean>{
+  public deleteSession(id:number): Observable<boolean>{
     return this.http.delete<boolean>(`${SessionService._apiUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
@@ -63,6 +63,14 @@ export class SessionService {
       catchError(this.handleError)
     );
   }
+
+
+  public CodeSessionExist(code : string) : Observable<Boolean>{
+    return this.http.get<Boolean>(`${SessionService._apiUrl}/exist?code=${code}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
 
   private handleError(error: HttpErrorResponse) {

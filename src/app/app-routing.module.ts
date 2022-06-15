@@ -6,6 +6,8 @@ import { AccueilComponent } from './components/accueil/accueil.component';
 const routes: Routes = [
 { path: 'accueil', component: AccueilComponent },
 {path: 'formation',loadChildren:() => import('./modules/formation/formation.module').then(m => m.FormationModule) },
+{path: 'session',loadChildren:() => import('./modules/session/session.module').then(m => m.SessionModule) },
+{path: 'salle',loadChildren:() => import('./modules/salle/salle.module').then(m => m.SalleModule) },
 { path: '**', redirectTo: '/accueil', pathMatch: 'full'}
 ];
 

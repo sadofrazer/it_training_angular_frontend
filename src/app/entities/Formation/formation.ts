@@ -9,4 +9,6 @@ export class Formation{
     public nbreJrs : number;
     public respCat : Responsable;
     public stheme : Stheme;
+    public objectifs : string;
+    public programme : string;
 }

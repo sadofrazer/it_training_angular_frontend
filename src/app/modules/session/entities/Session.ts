@@ -1,5 +1,6 @@
 import { Formation } from "src/app/entities/Formation/formation";
 import { Formateur, Responsable } from "src/app/entities/Utilisateur/utilisateur";
+import { Salle } from "../../salle/entities/salle";
 
 export class Session{
     public idSession : number;
