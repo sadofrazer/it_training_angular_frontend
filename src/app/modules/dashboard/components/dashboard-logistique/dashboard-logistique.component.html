@@ -1,0 +1,15 @@
+<div class="container-fluid full mt-5">
+    <p>date du jour : {{currentDate | date:'dd-MM-yyyy'}}</p>
+    
+    <p>choississez une formation</p>
+    <form (ngSubmit)="onSubmitFormFormation()">
+        <select name="formation" [(ngModel)]="formation" class="form-control" aria-label="Default select example">
+            <option *ngFor="let formation of formations" [ngValue]="formation">{{formation.nom}}</option>
+        </select> 
+        <button type="submit" class="btn btn-primary">
+            afficher sessions
+        </button>    
+    </form>
+    <app-dashboard-logistique-session [sessions]="sessions"> </app-dashboard-logistique-session>  
+    <hr>  
+</div>

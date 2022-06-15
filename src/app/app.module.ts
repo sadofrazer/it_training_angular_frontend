@@ -10,7 +10,8 @@ import { CoreModule } from './modules/core/core.module';
 import { FormationModule } from './modules/formation/formation.module';
 import { FormationService } from './modules/formation/services/formation.service';
 import { FormsModule } from '@angular/forms';
-import { ConnexionComponent } from './modules/connexion/connexion.component';
+import { ConnexionComponent } from './components/connexion/connexion.component';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ConnexionComponent } from './modules/connexion/connexion.component';
     NgbModule,
     CoreModule,
     FormationModule,
+    DashboardModule,
     FormsModule
   ],
   exports: [

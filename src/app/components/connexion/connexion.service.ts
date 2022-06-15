@@ -10,9 +10,9 @@ import { Utilisateur } from 'src/app/entities/Utilisateur/utilisateur';
 })
 export class ConnexionService {
 
-  private readonly PERSONNE_API_URL = 'http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/utilisateur';
+  private readonly PERSONNE_API_URL = 'http://it-training-bdd.cloudapps-cm.com:8081/FormationRestApi/rest/connexion/';
 
-  personne = new Utilisateur();
+  public personne = new Utilisateur();
   public login: string;
   public isloggedIn: boolean = false;
   public type: string;
@@ -42,7 +42,7 @@ export class ConnexionService {
 
   isResponsable(){
     let role = localStorage.getItem('type');
-    if(role==='responsable'){
+    if(role==='Responsable'){
       return true;
     }else{
       return false;
@@ -51,7 +51,7 @@ export class ConnexionService {
 
   isApprenant(){
     let role = localStorage.getItem('type');
-    if(role==='apprenant'){
+    if(role==='APPRENANT'){
       return true;
     }else{
       return false;
@@ -60,7 +60,16 @@ export class ConnexionService {
 
   isFormateur(){
     let role = localStorage.getItem('type');
-    if(role==='formateur'){
+    if(role==='FORMATEUR'){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  isAdministrateur(){
+    let role = localStorage.getItem('type');
+    if(role==='Administrateur'){
       return true;
     }else{
       return false;
