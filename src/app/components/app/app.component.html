@@ -33,26 +33,60 @@
                       Certifications
                   </a>                   
               </li>
-              <li class="nav-item">
-                <a class="nav-link h6 me-3 p-3" [routerLink]="'certification'" (click)="isMenuCollapsed = true">
-                    Financement / CPF
-                </a>                   
-              </li>
+
               <li class="nav-item ">
                 <a class="nav-link h6 me-3 p-3" [routerLink]="'contact'" (click)="isMenuCollapsed = true">
                     Contact
                 </a>                   
               </li>
+
+              <!--Responsable Catalogue-->
               <li class="nav-item dropdown">
                 <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'#'"  (click)="isMenuCollapsed = true">
                     Administration
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark fs-6">
                   <li><a class="dropdown-item "  [routerLink]="'/formation/gestion/catalogue'">Gestion du catalogue</a></li>
-                  <li><a class="dropdown-item" href="#">Gestion de la planification</a></li>
-                  <li><a class="dropdown-item" href="#">Gestion de la logistique</a></li>
                 </ul>
-            </li>
+              </li>
+
+              <!--Responsable Formations-->
+              <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'#'"  (click)="isMenuCollapsed = true">
+                    Administration
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark fs-6">
+                  <li><a class="dropdown-item" [routerLink]="'/session/gestion'">Gestion des sessions</a></li>
+                  <li><a class="dropdown-item" [routerLink]="'/salle/inscription'">Gestion des inscriptions</a></li>
+                </ul>
+              </li>
+
+              <!--Responsable Logistique-->
+              <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'#'"  (click)="isMenuCollapsed = true">
+                    Administration
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark fs-6">
+                  <li><a class="dropdown-item" [routerLink]="'/salle/gestion'">Gestion des salles</a></li>
+                  <li><a class="dropdown-item" [routerLink]="'/salle/gestion'">Valider les checks logistique</a></li>
+                </ul>
+              </li>
+
+              <!--Administrateur-->
+              <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'#'"  (click)="isMenuCollapsed = true">
+                    Administration
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark fs-6">
+                  <li><a class="dropdown-item "  [routerLink]="'/formation/gestion/catalogue'">Gestion du catalogue</a></li>
+                  <li><a class="dropdown-item" [routerLink]="'/salle/gestion'">Gestion des salles</a></li>
+                  <li><a class="dropdown-item" [routerLink]="'/session/gestion'">Gestion des sessions</a></li>
+                  <li><a class="dropdown-item" [routerLink]="'/salle/inscription'">Gestion des inscriptions</a></li>
+                  <li><a class="dropdown-item" [routerLink]="'/salle/gestion'">Gestion des salles</a></li>
+                  <li><a class="dropdown-item" [routerLink]="'/salle/gestion'">Valider les checks logistique</a></li>
+                </ul>
+              </li>
+
           </ul>
           <form  (ngSubmit)="getSearchWord()" class="d-flex ms-5" role="search">
             <input class="form-control ms-5 me-2" type="search" placeholder="Rechercher des formations" aria-label="Search" name="search" [(ngModel)]="word">

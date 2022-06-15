@@ -9,15 +9,15 @@
     <div class="container p-0 bg-primary" *ngIf=" formation$|async as f ">
         <div class="card">
             <div class="row container p-0 m-0 titre">
-                <div class="col-md-3 p-0 d-flex align-items-center">
+                <div class="col-md-3 p-0 d-flex align-items-center h-100">
                     <img [src]="'../../../../../assets/img/formations/'+f.codeFormation+'.jpg'" 
                     onerror="this.src='https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'" class="img w-100 rounded me-5" alt="...">
                 </div>
                 <div class="col-md-8 ms-3 position-relative">
                     <div class="card-body">
                     <h4 class="card-title own-text">{{ f.codeFormation}}</h4>
-                    <h4 class="card-title">{{ f.nom }}</h4>
-                    <button class="fst-italic badge btn-success text-wrap p-2 fs-6 mt-3 mb-2">&#9733; <b>S'inscrire</b></button>
+                    <h4 class="card-title mb-4">{{ f.nom }}</h4>
+                    <button class="fst-italic badge btn-success text-wrap p-2 fs-6 mt-3 mb-3">&#9733; <b>S'inscrire</b></button>
                     <p class="card-text"><small class="fst-italic badge bg-primary text-wrap fs-5  p-2 ">Durée : {{ f.nbreJrs }} {{f.nbreJrs>1? 'Jours':'Jour'}}</small></p>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                           </ngb-panel>
                     </ngb-accordion>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5 mb-4">
                     <ngb-accordion [closeOthers]="true" activeIds="static-2">
                         <ngb-panel id="static-2">
                             <ng-template ngbPanelTitle>
