@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Utilisateur } from '../utilisateur';
+import { Utilisateur } from 'src/app/entities/Utilisateur/utilisateur';
 
 
 @Component({

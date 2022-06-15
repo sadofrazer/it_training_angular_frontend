@@ -1,13 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TypeUser } from '../typeuser';
-import { Apprenant } from '../Apprenant';
+import { Apprenant } from 'src/app/entities/Utilisateur/Apprenant';
+import { Formateur } from 'src/app/entities/Utilisateur/Formateur';
+import { Responsable } from 'src/app/entities/Utilisateur/Responsable';
+import { TypeUser } from 'src/app/entities/Utilisateur/typeuser';
+import { Utilisateur } from 'src/app/entities/Utilisateur/utilisateur';
+
 import { ApprenantService } from '../apprenant.service';
-import { Formateur } from '../Formateur';
+
 import { FormateurService } from '../formateur.service';
-import { Responsable } from '../Responsable';
+
 import { ResponsableService } from '../responsable.service';
-import { Utilisateur } from '../utilisateur';
+
 import { UtilisateurService } from '../utilisateur.service';
 
 @Component({

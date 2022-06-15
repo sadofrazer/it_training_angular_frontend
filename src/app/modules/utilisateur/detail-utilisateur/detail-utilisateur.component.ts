@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Apprenant } from '../Apprenant';
+import { Utilisateur } from 'src/app/entities/Utilisateur/utilisateur';
+
 import { ApprenantService } from '../apprenant.service';
 import { FormateurService } from '../formateur.service';
 import { ResponsableService } from '../responsable.service';
-import { Utilisateur } from '../utilisateur';
+
 import { UtilisateurService } from '../utilisateur.service';
 
 @Component({

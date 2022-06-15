@@ -5,13 +5,12 @@ import { ModifUtilisateurComponent } from './modif-utilisateur/modif-utilisateur
 import { AjoutUtilisateurComponent } from './ajout-utilisateur/ajout-utilisateur.component';
 import { ListUtilisateurComponent } from './list-utilisateur/list-utilisateur.component';
 import { DetailUtilisateurComponent } from './detail-utilisateur/detail-utilisateur.component';
-import { UtilisateurTypeColorPipe } from './utilisateur-type-color.pipe';
+
 import { UtilisateurFormComponent } from './utilisateur-form/utilisateur-form.component';
 import { FormsModule } from '@angular/forms';
 import { UtilisateurService } from './utilisateur.service';
 import { SearchUtilisateurComponent } from './search-utilisateur/search-utilisateur.component';
 import { LoderComponent } from './loder/loder.component';
-import { AuthGuard } from '../auth.guard';
 
 
 //canActivate: [AuthGuard]
@@ -25,7 +24,6 @@ const utilisateurroutes: Routes =[
   declarations: [
     ListUtilisateurComponent,
     DetailUtilisateurComponent,
-    UtilisateurTypeColorPipe,
     ModifUtilisateurComponent,
     UtilisateurFormComponent,
     AjoutUtilisateurComponent,

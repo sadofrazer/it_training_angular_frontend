@@ -10,6 +10,7 @@ import { CoreModule } from './modules/core/core.module';
 import { FormationModule } from './modules/formation/formation.module';
 import { FormationService } from './modules/formation/services/formation.service';
 import { FormsModule } from '@angular/forms';
+import { UtilisateurModule } from './modules/utilisateur/utilisateur.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     CoreModule,
     FormationModule,
+    UtilisateurModule,
     FormsModule
   ],
   exports: [

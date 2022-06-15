@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, Observable, tap, of } from "rxjs";
-import { TypeUser } from "./typeuser";
-import { Responsable } from "./Responsable";
+import { Responsable } from "src/app/entities/Utilisateur/Responsable";
+import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
+
 
 
 
