@@ -46,6 +46,7 @@ export class GestionFormationComponent implements OnDestroy, OnInit {
       this.formations$=f;
       this.dtTrigger.next(this.formation);
     });
+    
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.sthemes$=this.sthemeService.getAllSthemes();
     

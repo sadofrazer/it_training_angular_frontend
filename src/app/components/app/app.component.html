@@ -46,14 +46,14 @@
                     mes sessions 
                 </a>                   
               </li>
+
+              <!--Responsable Catalogue-->
               <li class="nav-item dropdown">
                 <a class="nav-link  dropdown-toggle h6 me-3 p-3" *ngIf="connexionService.isResponsable()==true" data-bs-toggle="dropdown"  [routerLink]="'#'"  (click)="isMenuCollapsed = true">
                     Administration
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark fs-6">
                   <li><a class="dropdown-item "  [routerLink]="'/formation/gestion/catalogue'">Gestion du catalogue</a></li>
-                  <li><a class="dropdown-item" href="#">Gestion de la planification</a></li>
-                  <li><a class="dropdown-item" href="#">Gestion de la logistique</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown">

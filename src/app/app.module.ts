@@ -12,6 +12,8 @@ import { FormationService } from './modules/formation/services/formation.service
 import { FormsModule } from '@angular/forms';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { SessionModule } from './modules/session/session.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
     CoreModule,
     FormationModule,
     DashboardModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   exports: [
     AccueilComponent

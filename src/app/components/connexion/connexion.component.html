@@ -1,21 +1,22 @@
-<div class="container-fluid full mt-5">
+<div class="container-fluid full">
     <div class="row justify-content-md-center">
-      <div class="col-md-4">
+      <div class="col-md-4 mt-5">
       <div class="alert alert-danger" *ngIf="erreur == 1">
         <strong>login ou mot de passe erronés..</strong>
       </div>
         <form action="">
-          <div class="form-group">
-            <label for="">
-              login
-            </label>
+          <div class="form-group mt-5">
+            <label 
+              class="form-label" 
+              for="login">login</label>
             <input
+              id="login"
               type="text"
               name="login"
               class="form-control"
               [(ngModel)]="login"/>
           </div>
-          <div class="form-group">
+          <div class="form-group mt-4">
             <label for="">
               Mot de passe
             </label>
@@ -25,13 +26,18 @@
               class="form-control"
               [(ngModel)]="password"/>
           </div>
-          <div class="row justify-content-md-center">
+          <div class="row justify-content-md-center mt-4">
             <button
             type="button"
             (click)="seConnecter()"
-            class="btn btn-success">
+            class="btn btn-primary col-lg-3">
             connexion
-          </button>
+            </button>
+            <button
+            type="button"
+            class="btn btn-secondary col-lg-3 mr-2">
+            inscription
+            </button>
           </div>
         </form>
       </div>

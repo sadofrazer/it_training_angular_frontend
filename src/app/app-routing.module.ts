@@ -9,6 +9,8 @@ const routes: Routes = [
 { path: 'connexion', component: ConnexionComponent},
 { path: 'formation',loadChildren:() => import('./modules/formation/formation.module').then(m => m.FormationModule) },
 { path: 'dashboard',loadChildren:() => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
+{ path: 'session',loadChildren:() => import('./modules/session/session.module').then(m => m.SessionModule) },
+{ path: 'salle',loadChildren:() => import('./modules/salle/salle.module').then(m => m.SalleModule) },
 { path: '**', redirectTo: '/accueil', pathMatch: 'full'}
 ];
 
