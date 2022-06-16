@@ -6,6 +6,7 @@ import { Salle } from "./salle";
 export class AttribSalle{
     public idAttribSalle : number;
     public dateAttrib: Date;
+    public dateModif: Date;
     public statut : string;
     public salle : Salle;
     public session : Session;

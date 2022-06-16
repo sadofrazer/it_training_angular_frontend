@@ -4,6 +4,7 @@ import { GestionSessionComponent } from './components/gestion-session/gestion-se
 
 const routes: Routes = [
   {path: 'gestion', component: GestionSessionComponent},
+  {path: 'gestion/:id', component: GestionSessionComponent}
 ];
 
 @NgModule({

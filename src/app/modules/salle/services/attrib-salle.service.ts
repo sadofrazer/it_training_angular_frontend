@@ -19,9 +19,9 @@ export class AttribSalleService {
   }
 
 
-  public addAttribSalle(s: AttribSalle) : Observable<AttribSalle>{
+  public addAttribSalle(s: AttribSalle) : Observable<Boolean>{
     console.log("execute add")
-    return this.http.post<AttribSalle>(`${AttribSalleService._apiUrl}`,s).pipe(
+    return this.http.post<Boolean>(`${AttribSalleService._apiUrl}`,s).pipe(
       catchError(this.handleError)
     );
   }
@@ -48,6 +48,19 @@ export class AttribSalleService {
     );
   }
 
+
+  public getAllBySessionId(id:number) : Observable<AttribSalle[]>{
+    return this.http.get<AttribSalle[]>(`${AttribSalleService._apiUrl}/session/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
+  public getAllBySalleId(id:number) : Observable<AttribSalle[]>{
+    return this.http.get<AttribSalle[]>(`${AttribSalleService._apiUrl}/salle/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
   
 
   private handleError(error: HttpErrorResponse) {
