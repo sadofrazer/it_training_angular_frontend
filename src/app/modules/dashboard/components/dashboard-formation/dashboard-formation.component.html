@@ -1,0 +1,22 @@
+<div class="container-fluid full">
+    <p><strong>date du jour : {{currentDate | date:'dd-MM-yyyy'}}</strong></p>
+
+    <div class="container">
+    <p class="mt-5"><strong><font size="6" >choississez une formation</font> </strong></p>
+    <form (ngSubmit)="onSubmitFormFormation()">
+        <div class="col-lg-6">
+            <select class="col-lg-3" name="formation" class="form-control" [(ngModel)]="formation" aria-label="Default select example">
+                <option *ngFor="let formation of formations" [ngValue]="formation">{{formation.nom}}</option>
+            </select>
+        </div>
+        
+        <div class="col-lg-4">
+            <button type="submit" class="btn btn-primary">
+                afficher ses sessions
+            </button>
+        </div> 
+        
+    </form> 
+    <app-dashboard-formation-session [sessions]="sessions"></app-dashboard-formation-session> 
+</div>
+</div>

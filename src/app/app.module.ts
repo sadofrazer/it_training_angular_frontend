@@ -10,6 +10,8 @@ import { CoreModule } from './modules/core/core.module';
 import { FormationModule } from './modules/formation/formation.module';
 import { FormationService } from './modules/formation/services/formation.service';
 import { FormsModule } from '@angular/forms';
+import { ConnexionComponent } from './components/connexion/connexion.component';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { SessionModule } from './modules/session/session.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -17,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     AccueilComponent,
+    ConnexionComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgbModule,
     CoreModule,
     FormationModule,
+    DashboardModule,
     FormsModule,
     BrowserAnimationsModule
   ],

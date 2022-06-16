@@ -1,0 +1,15 @@
+<div *ngIf="sessions" >
+    <form (ngSubmit)="onSubmitFormSession()">
+        <select  name="session" class="form-select" [(ngModel)]="session" aria-label="Default select example">
+            <option *ngFor="let session of sessions" [ngValue]="session">{{session.nom}} - date de fin {{session.dateFin}}</option>
+        </select>
+    </form>
+    <div *ngIf="session" >
+        <p>formateur : </p>
+        <p>date de fin de formation : </p>
+        <p>salles : </p>
+        <!--<select  class="form-select" aria-label="Default select example">
+            <option *ngFor="let session of sessions" [value]="session.idSession">{{session.nom}} - date de fin {{session.dateFin}}</option>
+        </select>--> 
+    </div>      
+</div> 
