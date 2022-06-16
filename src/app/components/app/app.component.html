@@ -14,7 +14,7 @@
       <!-- Step 2: Add the ngbCollapse directive to the element below. -->
       <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
           <ul class="navbar-nav ms-5" id="megamenu">
-              <li class="nav-item active">
+              <li class="nav-item active p-0">
                   <a class="nav-link h6  me-3 p-3" [routerLink]="'/accueil'" (click)="isMenuCollapsed = true">
                       Accueil
                   </a>
@@ -31,7 +31,7 @@
               <li class="nav-item">
                   <a class="nav-link h6 me-3 p-3" [routerLink]="'certification'" (click)="isMenuCollapsed = true">
                       Certifications
-                  </a>                   
+                  </a>                   s
               </li>
 
               <li class="nav-item ">

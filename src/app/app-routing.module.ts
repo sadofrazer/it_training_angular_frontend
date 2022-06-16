@@ -8,6 +8,7 @@ const routes: Routes = [
 {path: 'formation',loadChildren:() => import('./modules/formation/formation.module').then(m => m.FormationModule) },
 {path: 'session',loadChildren:() => import('./modules/session/session.module').then(m => m.SessionModule) },
 {path: 'salle',loadChildren:() => import('./modules/salle/salle.module').then(m => m.SalleModule) },
+{path: 'inscription',loadChildren:() => import('./modules/inscription/inscription.module').then(m => m.InscriptionModule) },
 { path: '**', redirectTo: '/accueil', pathMatch: 'full'}
 ];
 

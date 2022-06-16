@@ -295,42 +295,39 @@ export class GestionSessionComponent implements OnInit {
 
 
   public deleteSession(id: number):void{
-    let delOk:boolean=false;
+    let delOk:number=1;
     //suppression des attributions de salles, libération des salles avant de supprimer les sessions
     this.attribSalleService.getAllBySessionId(id).subscribe((attribs: AttribSalle[])=>{
+      delOk=attribs.length;
       for(let a of attribs){
-        delOk=false;
         a.salle.statut="FREE"
         this.salleService.editSalle(a.salle.idSalle, a.salle).subscribe();
         this.attribSalleService.deleteAttribSalle(a.idAttribSalle).subscribe((b1:boolean)=>{
           if(b1){
-            delOk=true;
+            
           }
         });
       }
+    });
 
-      let delSession : boolean = false
-      do{
-        this.sessionService.deleteSession(id).subscribe((b:boolean)=>{
-          delSession=b;
-          if(b){
-            delSession=true
+    let delSession : boolean = false
+    this.sessionService.deleteSession(id).subscribe((b:boolean)=>{
+      delSession=b;
+      if(b){
+        delSession=true
+        this.router.navigate(['/session/gestion/']).then(() => {
+          window.location.reload();
+        });
+      }else{
+        this.sessionService.deleteSession(id).subscribe((b2:boolean)=>{
+          if(b2){
+            delSession=true;
             this.router.navigate(['/session/gestion/']).then(() => {
               window.location.reload();
             });
-          }else{
-            this.sessionService.deleteSession(id).subscribe((b2:boolean)=>{
-              if(b2){
-                delSession=true;
-                this.router.navigate(['/session/gestion/']).then(() => {
-                  window.location.reload();
-                });
-              }
-            });
           }
-        })
-      }while(delSession)
-      
+        });
+      }
     })
   }
 

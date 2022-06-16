@@ -34,8 +34,8 @@
                                                     <th scope="row" class="align-middle own-text"><a [routerLink]="'/formation/details/'+f.idFormation"><span class="own-text">{{ f.codeFormation }}</span></a></th>
                                                     <td class="align-middle"> {{ f.nom }}</td>
                                                     <td class="align-middle">{{ f.description }}</td>
-                                                    <td class="align-middle nb"><span class="badge bg-primary rounded-pill ps-3 pe-3 fs-5 pt-0 pb-2">{{ f.nbreJrs| number }}</span></td>
-                                                    <td class="align-middle"><button class="btn btn-success btn-sm ms-5" [routerLink]="'/formation/details/'+f.idFormation">S'inscrire</button></td>
+                                                    <td class="align-middle nb"><span class="badge bg-primary rounded-pill ps-3 pe-3 fs-5 pt-2">{{ f.nbreJrs| number }}</span></td>
+                                                    <td class="align-middle"><button class="btn btn-success btn-sm ms-5" [routerLink]="'/session/lister/formation/'+f.idFormation">Sessions</button></td>
                                                 </tr>
                                             </tbody>
                                         </table>
