@@ -10,12 +10,19 @@ import { CoreModule } from './modules/core/core.module';
 import { FormationModule } from './modules/formation/formation.module';
 import { FormationService } from './modules/formation/services/formation.service';
 import { FormsModule } from '@angular/forms';
+<<<<<<< HEAD
+=======
+import { ConnexionComponent } from './components/connexion/connexion.component';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { SessionModule } from './modules/session/session.module';
+>>>>>>> f8b191561c416011ad17cb920179474b5eec0a92
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
+    ConnexionComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgbModule,
     CoreModule,
     FormationModule,
+    DashboardModule,
     FormsModule,
     BrowserAnimationsModule
   ],
