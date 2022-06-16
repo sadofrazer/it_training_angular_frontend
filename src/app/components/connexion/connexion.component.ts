@@ -31,6 +31,8 @@ export class ConnexionComponent implements OnInit {
           localStorage.setItem('login',utilisateur.login);
           localStorage.setItem('type',utilisateur.typeUser.nom);
           localStorage.setItem('connexion','true');
+          console.log('la personne connectée:')
+          console.log(this.connexionService.pers)
           this.router.navigate(['/']);
         }else{
         this.erreur = 1;

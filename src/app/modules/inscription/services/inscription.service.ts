@@ -18,6 +18,12 @@ export class InscriptionService {
   }
 
 
+  public getAllByApprenant(id:number) : Observable<Inscription[]>{
+    return this.http.get<Inscription[]>(`${InscriptionService._apiUrl}/apprenant/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
   public addInscription(i: Inscription) : Observable<Inscription>{
     console.log("execute add")

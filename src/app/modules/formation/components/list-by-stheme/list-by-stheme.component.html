@@ -30,7 +30,7 @@
                                         <th scope="row"  class="align-middle own-text"><a [routerLink]="'/formation/details/'+f.idFormation">{{ f.codeFormation }}</a></th>
                                         <td  class="align-middle">{{ f.nom }}</td>
                                         <td  class="align-middle">{{ f.description }}</td>
-                                        <td  class="align-middle text-center"><span class="badge bg-primary rounded-pill h6 pe-3 ps-3 fs-5 pt-0 pb-2">{{ f.nbreJrs| number }}</span></td>
+                                        <td  class="align-middle text-center"><span class="badge bg-primary rounded-pill h6 pe-3 ps-3 fs-5 pt-1 pb-2">{{ f.nbreJrs| number }}</span></td>
                                         <td class="align-middle"><button class="btn btn-success btn-sm ms-5" [routerLink]="'/session/lister/formation/'+f.idFormation">Sessions</button></td>
                                     </tr>
                                 </tbody>

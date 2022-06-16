@@ -155,8 +155,8 @@
                             </thead>
                             <tbody *ngFor="let s of sessions$|async">
                                 <tr>
-                                    <th scope="row" class="align-middle own-text"><a [routerLink]="'/session/gestion/'+s.idSession">{{ s.codeSession }}</a></th>
-                                    <td class="align-middle"> {{ s?.nom }}</td>
+                                    <th scope="row" class="align-middle own-text"><a class="own-text" [routerLink]="'/session/gestion/'+s.idSession">{{ s.codeSession }}</a></th>
+                                    <td class="align-middle own-text"> {{ s?.nom }}</td>
                                     <td class="align-middle"> {{ s?.type }}</td>
                                     <td class="align-middle"> {{ s?.dateDebut | date }}</td>
                                     <td class="align-middle"> {{ s?.dateFin | date }}</td>

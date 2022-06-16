@@ -34,12 +34,12 @@
                                     </thead>
                                     <tbody *ngFor="let s of sessions$|async">
                                         <tr>
-                                            <th scope="row" class="align-middle own-text"><a [routerLink]="'/session/gestion/'+s.idSession">{{ s.codeSession }}</a></th>
+                                            <th scope="row" class="align-middle own-text"><a class="own-text" [routerLink]="'/inscription/create/session/'+s.idSession">{{ s.codeSession }}</a></th>
                                             <td class="align-middle"> {{ s?.nom }}</td>
                                             <td class="align-middle"> {{ s?.type }}</td>
                                             <td class="align-middle"> {{ s?.dateDebut | date }}</td>
                                             <td class="align-middle"> {{ s?.dateFin | date }}</td>
-                                            <td class="align-middle"> {{ s?.formation?.codeFormation }}</td>
+                                            <td class="align-middle own-text"> {{ s?.formation?.codeFormation }}</td>
                                             <td class="align-middle"> {{ s?.formateur?.nom}}</td>
                                             <td class="align-middle"> 
                                                 <ng-container *ngFor="let a of attribSalles">
@@ -48,7 +48,7 @@
                                                     </p>
                                                 </ng-container>
                                             </td>
-                                            <td class="align-middle"> {{ s?.prix | currency:'EUR'}}</td>
+                                            <td class="align-middle own-text"> {{ s?.prix | currency:'EUR'}}</td>
                                             <td class="align-middle"> {{ s?.statut }}</td>
                                             <td class="align-middle">{{ s?.description }}</td>
                                             <td class="align-middle"><button class="btn btn-success btn-sm ms-5" [routerLink]="'/inscription/create/session/'+s.idSession">S'inscrire</button></td>

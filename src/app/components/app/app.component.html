@@ -1,6 +1,6 @@
 
 <!-- Utilisation des classes bootstrap pour le menu -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light  p-3 bg-light navbar-dark bg-dark w-100">
+<nav class="navbar navbar-expand-lg navbar-light bg-light  pt-3 px-2 bg-light navbar-dark bg-dark w-100">
   <!--  -->
   <div class="container-fluid d-flex align-items-center">
       <!-- RouterLink va généré pour nous l'attribut href -->
@@ -47,11 +47,7 @@
               <li class="nav-item">
                   <a class="nav-link h6 me-3 p-3" *ngIf="connexionService.isConnected()==false" [routerLink]="'certification'" (click)="isMenuCollapsed = true">
                       Certifications
-<<<<<<< HEAD
-                  </a>                   s
-=======
                   </a>
->>>>>>> f8b191561c416011ad17cb920179474b5eec0a92
               </li>
 
               
@@ -116,7 +112,6 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark fs-6">
                   <li><a class="dropdown-item " [routerLink]="'/formation/gestion/catalogue'">Gestion du catalogue</a></li>
-                  <li><a class="dropdown-item" [routerLink]="'/salle/gestion'">Gestion des salles</a></li>
                   <li><a class="dropdown-item" [routerLink]="'/session/gestion'">Gestion des sessions</a></li>
                   <li><a class="dropdown-item" [routerLink]="'/salle/inscription'">Gestion des inscriptions</a></li>
                   <li><a class="dropdown-item" [routerLink]="'/salle/gestion'">Gestion des salles</a></li>

@@ -1,4 +1,5 @@
-import { Session } from "inspector";
+
+import { Session } from "src/app/modules/session/entities/Session";
 import { Apprenant } from "../Utilisateur/utilisateur";
 
 export class Inscription{
@@ -6,8 +7,6 @@ export class Inscription{
     public codeInscription : string;
     public statut : string;
     public dateInscription : Date;
-    public dateFin : Date;
-    public prix : number;
     public apprenant : Apprenant;
     public session : Session;
 }

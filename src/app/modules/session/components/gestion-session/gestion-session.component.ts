@@ -16,6 +16,7 @@ import * as _ from 'lodash';
 import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
+import { ConnexionService } from 'src/app/components/connexion/connexion.service';
 
 
 export interface Fruit {
@@ -57,10 +58,11 @@ export class GestionSessionComponent implements OnInit {
 
   constructor(private formationService:FormationService, private sessionService: SessionService,
     private salleService:SalleService, private attribSalleService: AttribSalleService,
+    private connexionService: ConnexionService,
     private activatedRoute: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
-
+    console.log(this.connexionService.pers)
     this.selectFormateur=new Formateur();
     this.selectFormateur=null;
     //this.attribSalle=new AttribSalle();

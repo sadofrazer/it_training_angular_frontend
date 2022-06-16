@@ -110,7 +110,7 @@
                             </thead>
                             <tbody *ngFor="let s of salles$|async">
                                 <tr >
-                                    <th scope="row" class="align-middle own-text"><a [routerLink]="'/salle/gestion/'+s.idSalle">{{ s.codeSalle }}</a></th>
+                                    <th scope="row" class="align-middle own-text"><a class="own-text" [routerLink]="'/salle/gestion/'+s.idSalle">{{ s.codeSalle }}</a></th>
                                     <td class="align-middle"> {{ s.nomSalle }}</td>
                                     <td class="align-middle">{{ s.ville }}</td>
                                     <td class="align-middle">{{ s.adresse }}</td>
