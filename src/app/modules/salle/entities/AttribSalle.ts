@@ -1,5 +1,5 @@
 
-import { Responsable } from "src/app/entities/Utilisateur/utilisateur";
+import { Responsable } from "src/app/entities/Utilisateur/Responsable";
 import { Session } from "../../session/entities/Session";
 import { Salle } from "./salle";
 

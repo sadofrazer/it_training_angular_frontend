@@ -14,6 +14,7 @@ import { ConnexionComponent } from './components/connexion/connexion.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { SessionModule } from './modules/session/session.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UtilisateurModule } from './modules/utilisateur/utilisateur.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormationModule,
     DashboardModule,
     FormsModule,
+    UtilisateurModule,
     BrowserAnimationsModule
   ],
   exports: [

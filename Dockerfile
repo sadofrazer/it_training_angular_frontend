@@ -1,6 +1,7 @@
 FROM node:18.3.0-alpine as angular-build
 LABEL name="Frazer SADO"
 LABEL email="sadofrazer@yahoo.fr"
+LABEL project="ITTRAINING"
 
 RUN mkdir /opt/angular
 WORKDIR /opt/angular

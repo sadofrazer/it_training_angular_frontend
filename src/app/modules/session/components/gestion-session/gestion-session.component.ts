@@ -2,7 +2,7 @@ import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Formation } from 'src/app/entities/Formation/formation';
-import { Formateur } from 'src/app/entities/Utilisateur/utilisateur';
+import { Formateur } from 'src/app/entities/Utilisateur/Formateur';
 import { FormationService } from 'src/app/modules/formation/services/formation.service';
 import { AttribSalle } from 'src/app/modules/salle/entities/AttribSalle';
 import { Salle } from 'src/app/modules/salle/entities/salle';
