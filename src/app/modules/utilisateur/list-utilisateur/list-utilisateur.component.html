@@ -1,10 +1,39 @@
+<div class="container-fluid full">
+  <div class="row d-flex justify-content-center   align-items-center">
+    <div class="text-center mt-5 mb-5">
+        <span class="text-uppercase fst-italic text-wrap fs-4 own-title">
+            Gestion des utilisateurs
+        </span>
+    </div>
+</div>
+  <mat-tab-group  color="accent" backgroundColor="primary">
 
-    <button (click)="all()">all</button>
-    <button (click)="app()">Apprenants</button>
-    <button (click)="resp()">Admins</button>
-    <button (click)="form()">Formateurs</button>
+ <mat-tab  label="All"> 
+  <table class="table bg-white col s12 m8 offset-m2">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Societe</th>
+        <th scope="col">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let utilisateur of utilisateurList" (click)="goToUtilisateur(utilisateur)"   >
+        <td>{{utilisateur.nom}}</td>
+        <td>{{utilisateur.prenom}}</td>
+        <th scope="row">{{utilisateur.societe    }}</th>
+        <td>{{utilisateur.typeuser.nom}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-info"style="position: absolut; bottom: 25px; right: 25px;"
+  routerLink="/utilisateur/ajout" >Ajouter</button>
+</mat-tab>
 
-    <table class="table col s12 m8 offset-m2">
+
+  <mat-tab label="Administrateur"> 
+    <table class="table bg-white col s12 m8 offset-m2">
       <thead class="thead-light">
         <tr>
           <th scope="col">Nom</th>
@@ -14,14 +43,65 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let utilisateur of utilisateurList" (click)="goToUtilisateur(utilisateur)"   >
-          <td>{{utilisateur.nom}}</td>
-          <td>{{utilisateur.prenom}}</td>
-          <th scope="row">{{utilisateur.societe}}</th>
-          <td>{{utilisateur.typeuser.nom}}</td>
+        <tr *ngFor="let responsable of responsableList" (click)="goToUtilisateur(responsable)"   >
+          <td>{{responsable.nom}}</td>
+          <td>{{responsable.prenom}}</td>
+          <th scope="row">{{responsable.societe    }}</th>
+          <td>{{responsable.typeuser.nom}}</td>
         </tr>
       </tbody>
     </table>
-     <a class="btn-floating btn-large waves-effect waves-light red z-depth-3" 
-    style="position: fixed; bottom: 25px; right: 25px;"
-    routerLink="/utilisateur/ajout">+</a>
+    <button type="button" class="btn btn-info"style="position: absolut; bottom: 25px; right: 25px;"
+    routerLink="/utilisateur/ajout" >Ajouter</button>
+     </mat-tab>
+  <mat-tab label="Apprenants "> 
+
+    <table class="table bg-white col s12 m8 offset-m2">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Societe</th>
+          <th scope="col">Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let apprenant of apprenantList" (click)="goToApp(apprenant)"   >
+          <td>{{apprenant.nom}}</td>
+          <td>{{apprenant.prenom}}</td>
+          <th scope="row">{{apprenant.societe    }}</th>
+          <td>{{apprenant.typeuser.nom}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-info"style="position: absolut; bottom: 25px; right: 25px;"
+    routerLink="/utilisateur/ajout" >Ajouter</button>
+  </mat-tab>
+  <mat-tab label="Formateurs"> 
+    <table class="table bg-white col s12 m8 offset-m2">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Societe</th>
+          <th scope="col">Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let formateur of formateurList" (click)="goToUtilisateur(formateur)"   >
+          <td>{{formateur.nom}}</td>
+          <td>{{formateur.prenom}}</td>
+          <th scope="row">{{formateur.societe    }}</th>
+          <td>{{formateur.typeuser.nom}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-info"style="position: absolut; bottom: 25px; right: 25px;"
+    routerLink="/utilisateur/ajout" >Ajouter</button>
+
+  
+  </mat-tab>
+
+</mat-tab-group>
+</div>
+

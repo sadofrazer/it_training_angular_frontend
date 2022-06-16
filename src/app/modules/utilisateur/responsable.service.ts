@@ -12,20 +12,22 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
   })
   //http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/utilisateur
   export class ResponsableService {
-  
+  APIRESP = "http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/responsables"
+   LASTAPIRESP = 'http://localhost:8080/UtilisateurRestApi/rest/responsables';
+   APITYPE = `http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/typeuser`;
     constructor (private http: HttpClient){
   
      }
     
      
-     getResponsabletList(): Observable<Responsable[]>{
-      return this.http.get<Responsable[]>('http://localhost:8080/UtilisateurRestApi/rest/responsables').pipe(
+     getResponsableList(): Observable<Responsable[]>{
+      return this.http.get<Responsable[]>(this.APIRESP).pipe(
        tap((respose)=> this.log(respose)),
        catchError((error)=> this.mesErrors(error,[]))
       );
      }
      getResponsableById(utilisateurId: number): Observable<Responsable|undefined>{
-      return this.http.get<Responsable>(`http://localhost:8080/UtilisateurRestApi/rest/responsables/${utilisateurId}`).pipe(
+      return this.http.get<Responsable>(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/responsables/${utilisateurId}`).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,undefined))
         );
@@ -35,7 +37,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
         headers: new HttpHeaders({'Content-Type': 'application/json'})
       };
   
-      return this.http.put('http://localhost:8080/UtilisateurRestApi/rest/responsables', responsable, httpOptions).pipe(
+      return this.http.put(this.APIRESP, responsable, httpOptions).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,null))
         );
@@ -43,7 +45,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
     }
     
     deleteUtilisateurById(utilisateurId: number): Observable<null>{
-       return this.http.delete(`http://localhost:8080/UtilisateurRestApi/rest/responsables/${utilisateurId}`).pipe(
+       return this.http.delete(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/responsables/${utilisateurId}`).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,null))
         );
@@ -54,7 +56,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
         headers: new HttpHeaders({'Content-Type': 'application/json'})
       };
   
-      return this.http.post<Responsable>(`http://localhost:8080/UtilisateurRestApi/rest/responsables`, responsable, httpOptions).pipe(
+      return this.http.post<Responsable>(this.APIRESP, responsable, httpOptions).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,null))
         );
@@ -73,7 +75,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
   
     getUtilisateurTypeList(): Observable<TypeUser[]>{
     
-      return this.http.get<TypeUser[]>(`http://localhost:8080/UtilisateurRestApi/rest/typeuser`).pipe(
+      return this.http.get<TypeUser[]>(this.APITYPE).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error, []))
         );

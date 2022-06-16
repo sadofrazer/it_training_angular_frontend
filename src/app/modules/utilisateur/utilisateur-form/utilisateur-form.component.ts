@@ -17,9 +17,10 @@ import { UtilisateurService } from '../utilisateur.service';
 @Component({
   selector: 'app-utilisateur-form',
   templateUrl: './utilisateur-form.component.html',
+  styleUrls: ['./utilisateur-form.component.scss']
    
-  styles: [
-  ]
+  //styleUrls: ['./utilisateur-form.component.css']
+  
 })
 export class UtilisateurFormComponent implements OnInit {
   @Input() utilisateur: Utilisateur;
@@ -29,6 +30,7 @@ export class UtilisateurFormComponent implements OnInit {
   affectation: TypeUser[];
   public af :TypeUser;
   isAddForm: boolean;
+  isUpdate: boolean;
 
   constructor(private utilisateurService: UtilisateurService,
     private apprenantService: ApprenantService,
@@ -37,9 +39,7 @@ export class UtilisateurFormComponent implements OnInit {
      private router: Router ) {}
 
   ngOnInit() {
-    //this.utilisateur.idUtilisateur = 0;
     this.af = new TypeUser();
-   // this.utilisateur = new Utilisateur();
     this.apprenant = new Apprenant() ;
     this.formateur = new Formateur();
     this.responsable = new Responsable();;
@@ -49,6 +49,7 @@ export class UtilisateurFormComponent implements OnInit {
      console.log(this.affectation);
    });
     this.isAddForm = this.router.url.includes('ajout');
+    this.isUpdate = this.router.url.includes('modif');
   }
  
 
@@ -59,7 +60,7 @@ export class UtilisateurFormComponent implements OnInit {
       this.utilisateur.typeuser=this.af;
     }
 
-    if(this.isAddForm && this.af.nom === 'Formateur'){
+    if(this.isAddForm && this.af.nom === 'FORMATEUR'){
       console.log(this.af);
       console.log(this.utilisateur);
       let form = <Formateur>this.utilisateur;
@@ -67,7 +68,7 @@ export class UtilisateurFormComponent implements OnInit {
       this.formateurService.addFormateur(form).subscribe((formateur: Formateur) => this.router.navigate(['/utilisateurs']));
 
     }
-    else if(this.isAddForm && this.af.nom === 'Apprenant'){
+    else if(this.isAddForm && this.af.nom === 'APPRENANT'){
        
       let app = <Apprenant>this.utilisateur;
       app.dernierDiplome=this.apprenant.dernierDiplome;
@@ -75,24 +76,23 @@ export class UtilisateurFormComponent implements OnInit {
       this.apprenantService.addApprenant(app).subscribe((apprenant: Apprenant) => this.router.navigate(['/utilisateurs']));
 
     }
-    else if(this.isAddForm && this.af.nom === 'Administrateur'){
+    else if(this.isAddForm && this.af.nom === 'Responsable'){
       console.log('admin')
       let admin = <Responsable>this.utilisateur;
       admin.fonction=this.responsable.fonction;
       console.log(admin);
-      this.responsableService.addResponsable(admin).subscribe((resp: Responsable) => this.router.navigate(['/utilisateurs']));
+      this.responsableService.addResponsable(admin).subscribe((responsable: Responsable) => this.router.navigate(['/utilisateurs']));
+
+    }else if(this.isUpdate && this.af.nom === 'Apprenant'){
+    
+      this.apprenantService.updateApprenant(this.apprenant).subscribe(() => this.router.navigate(['/utilisateur', this.apprenant.idUtilisateur]));
 
     }
    
-    else {
-
-      this.utilisateurService.updateUtilisateur(this.utilisateur).subscribe(() => this.router.navigate(['/utilisateur', this.utilisateur.idUtilisateur]));
-
-    }
-    {
-
-
-    // this.utilisateurService.updateUtilisateur(this.utilisateur).subscribe(() => this.router.navigate(['/utilisateur', this.utilisateur.idUtilisateur]));
+    
+    else{
+   
+     this.utilisateurService.updateUtilisateur(this.utilisateur).subscribe(() => this.router.navigate(['/utilisateur', this.utilisateur.idUtilisateur]));
 
     }
   

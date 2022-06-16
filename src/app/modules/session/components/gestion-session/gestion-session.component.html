@@ -1,61 +1,129 @@
-<!--
-    <div class="container-fluid full">
+<!-- <div class="container-fluid full">
     <div class="row d-flex justify-content-center   align-items-center">
+
+        <mat-tab-group>
+            <mat-tab label="First"> Content 1 </mat-tab>
+            <mat-tab label="Second"> Content 2 </mat-tab>
+            <mat-tab label="Third"> Content 3 </mat-tab>
+          </mat-tab-group>
+
         <div class="text-center mt-3">
             <span class="text-uppercase fst-italic text-wrap fs-4 own-title">
-                Gestion du catalogue de Formations
+                Gestion des sessions
             </span>
         </div>
     </div>
-    <div class="container mt-3">
+    <div class="container mt-3" *ngIf="session && sessions$ && formations$ && salles">
         <ngb-accordion [closeOthers]="true" activeIds="static-1" class="bg-dark">
             <ngb-panel id="static-1">
                 <ng-template ngbPanelTitle>
-                  <span><b>Créer / Modifier une formation</b></span>
+                  <span><b>Créer / Modifier une session</b></span>
                 </ng-template>
                 <ng-template ngbPanelContent class="bg-dark">
                     <form class="row g-3  bg-dark p-3 text-white form-floatingneeds-validation" novalidate #form="ngForm" >
-                        <input type="hidden" class="form-control" id="idForm" name="idForm" [(ngModel)]="f.idFormation" #id="ngModel" >
+
                         <div class="col-md-4">
-                            <label for="code" class="form-label">Code Formation</label>
-                            <input type="text" class="form-control own-text" id="code" name="code"required minlength="8" [(ngModel)]="f.codeFormation" #code="ngModel" (change)="changeId($event)">
+                            <label for="code" class="form-label">Code Session</label>
+                            <input type="text" class="form-control own-text" id="code" name="code"required minlength="6" [(ngModel)]="session.codeSession" #code="ngModel" (change)="changeId($event)">
                             <div *ngIf="code.invalid && code.dirty" class="invalid-feedback">
-                                Le code de la formation doit avoir au moins 8 caractères
+                                Le code de la session doit avoir au moins 6 caractères
                             </div>
                         </div>
+                        <div class="col-md-8"></div>
+
                         <div class="col-md-8">
                             <label for="nom" class="form-label">Nom</label>
-                            <input type="text" class="form-control" id="nom" name="nom"required [(ngModel)]="f.nom" #nom="ngModel">
+                            <input type="text" class="form-control" id="nom" name="nom"required [(ngModel)]="session.nom" #nom="ngModel">
                             <div *ngIf="nom.invalid && nom.dirty" class="invalid-feedback text-danegr">
-                                Le nom de la formation est indispensable!!!
+                                Le nom de la session est indispensable!!!
                             </div>
                         </div>
-                        <div class="col-md-9">
-                            <label for="inputStheme" class="form-label">Sous thème</label>
-                            <select class="dropdownlist" id="inputStheme" class="form-select"  (change)="selectChange($event)" name="stheme" required>
-                                <option [ngValue]="null" disabled>Choisir Sous thème ...</option>
-                                <option *ngFor="let s of sthemes$|async" [ngValue]="s" [selected]="f.stheme.codeStheme===s.codeStheme">{{s.codeStheme}}-{{s.nom}}</option>
+
+                        <div class="col-md-4">
+                            <label for="nom" class="form-label">Type</label>
+                            <select class="dropdownlist" id="inputStheme" class="form-select"  [(ngModel)]="session.type" name="type" required>
+                                <option value="INTER" >INTER</option>
+                                <option value="INTRA" >INTRA</option>
                             </select>
                         </div>
-                        <div class="col-md-3">
-                            <label for="inputJours" class="form-label">Nombre de Jours</label>
-                            <input class="form-control fs-5 pt-0 pb-2" type="number"  id="inputJours" min="1" max="99" required [(ngModel)]="f.nbreJrs" name="nbreJours" #nbreJours="ngModel">
-                            <div *ngIf="nbreJours.invalid && nbreJours.dirty" class="invalid-feedback">
-                                Le nombre de jours doit etre supérieur à 0
+
+                        
+                        
+                        
+                        <div class="col-md-6">
+                            <label for="inputFormation" class="form-label">Formation</label>
+                            <select class="dropdownlist" id="inputFormation" class="form-select"  (change)="selectFormationChange($event)" name="formation" required>
+                                <option [ngValue]="null" disabled>Choisir la formation ...</option>
+                                <option *ngFor="let f of formations$|async" [ngValue]="f" [selected]="session.formation.codeFormation===f.codeFormation">{{f.codeFormation}}-{{f.nom}}</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="inputFormateur" class="form-label">Formateur</label>
+                            <select class="dropdownlist" id="inputFormateur" class="form-select"  (change)="selectFormateurChange($event)" name="formateur" required>
+                                <option [ngValue]="null" disabled>Choisir la formation ...</option>
+                                <option *ngFor="let f of formateurs" [ngValue]="f" [selected]="session.formateur.codeUser===f.codeUser">{{f.codeUser}}-{{f.nom}}</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <mat-form-field class="example-chip-list" appearance="fill">
+                                <mat-label>Salles Sélectionnées</mat-label>
+                                <mat-chip-list #chipList aria-label="Sélection des salles">
+                                  <mat-chip color="accent"
+                                    *ngFor="let salle of codeSalles"
+                                    (removed)="remove(salle)">
+                                    {{salle}}
+                                    <button matChipRemove>
+                                      <mat-icon>cancel</mat-icon>
+                                    </button>
+                                  </mat-chip>
+                                  <input
+                                    placeholder="Nouvelle Salle..."
+                                    #salleInput
+                                    [formControl]="fruitCtrl"
+                                    [matAutocomplete]="auto"
+                                    [matChipInputFor]="chipList"
+                                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                    (matChipInputTokenEnd)="add($event)">
+                                </mat-chip-list>
+                                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                                  <mat-option *ngFor="let s of salles" [value]="s.codeSalle">
+                                    {{s.codeSalle + '-' + s.nomSalle + '- (' + s.nbrePlaces + ' Places)'}}
+                                  </mat-option>
+                                </mat-autocomplete>
+                              </mat-form-field>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="inputDebut" class="form-label">Date de Début</label>
+                            <input class="form-control fs-5 pt-0 pb-2" type="date" [defaultValue]="dateNow" id="inputDebut" required [(ngModel)]="session.dateDebut" name="dateDebut" #dateDebut="ngModel">
+                            <div *ngIf="dateDebut.invalid && dateDebut.dirty" class="invalid-feedback">
+                                Veuillez entrer une date de début
                             </div>
                         </div>
+
+                        <div class="col-md-4">
+                            <label for="inputFin" class="form-label">Date de Fin</label>
+                            <input class="form-control fs-5 pt-0 pb-2" type="date"  id="inputFin" required [(ngModel)]="session.dateFin" name="dateFin" #dateFin="ngModel">
+                            <div *ngIf="dateFin.invalid && dateFin.dirty" class="invalid-feedback">
+                                Veuillez entrer une date de fin
+                            </div>
+                        </div>
+
+                        <div class="col-4 mb-4">
+                            <label for="inputDescription" class="form-label">Prix (En Euros €)</label>
+                            <input type="number" min="1" class="form-control own-text" id="prix" name="prix"required [(ngModel)]="session.prix" #prix="ngModel">
+                            <div *ngIf="prix.invalid && prix.dirty" class="invalid-feedback">
+                                Veuillez entrer un montant valide
+                            </div>
+                        </div>
+
                         <div class="col-12 mb-4">
                             <label for="inputDescription" class="form-label">Description</label>
-                            <textarea class="form-control" name="" id="inputDescription" [(ngModel)]="f.description" name="description"cols="30" rows="3" placeholder="Entrez une description ou présentation de ladite formation" [value]="''"></textarea>
+                            <textarea class="form-control" name="" id="inputDescription" [(ngModel)]="session.description" name="description"cols="30" rows="3" placeholder="Entrez une description ou présentation de ladite formation" [value]="''"></textarea>
                         </div>
-                        <div class="col-md-6">
-                            <label for="inputObjectifs" class="form-label">Objectifs</label>
-                            <textarea class="form-control" name="" id="inputObjectifs" cols="30" rows="4" placeholder="Entrez une liste d'objectifs de ladite formation séparée par des points virgule" [value]="''"></textarea>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputProgramme" class="form-label">Programme</label>
-                            <textarea class="form-control" name="" id="inputProgramme" cols="30" rows="4" placeholder="Entrez le programme de la formation dont les items sont séparés par des points virgule" [value]="''"></textarea>
-                        </div>
+                        
                         <div class="col-12">
                             <button type="submit" [disabled]="form.invalid" class="btn btn-primary mt-3 ps-4 pe-4" [ngClass]="isCreation? 'btn-primary':'btn-warning'" >{{ isCreation? "Créer":"Modifier"}}</button>
                         </div>
@@ -73,31 +141,38 @@
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="row g-1  p-0 text-white table-responsive">
-                        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  class="row-border hover table table-striped table-hover">
+                        <table class="row-border hover table table-striped table-hover">
                             <thead>
                                 <tr class="fs-6">
                                     <th scope="col"><b>Code</b></th>
                                     <th scope="col"><b>Nom</b></th>
+                                    <th scope="col"><b>Type</b></th>
+                                    <th scope="col"><b>Début</b></th>
+                                    <th scope="col"><b>Fin</b></th>
+                                    <th scope="col"><b>Formation</b></th>
+                                    <th scope="col"><b>Formateur</b></th>
+                                    <th scope="col"><b>Prix</b></th>
+                                    <th scope="col"><b>statut</b></th>
                                     <th scope="col"><b>Description</b></th>
-                                    <th scope="col"><b>Thème</b></th>
-                                    <th scope="col"><b>Sous Thème</b></th>
-                                    <th scope="col" class="nb text-center"><b>Nbre Jours</b></th>
-
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let f of formations$">
-                                <tr (click)="clickForm(f.idFormation)">
-                                    <th scope="row" class="align-middle own-text"><a [routerLink]="'/formation/gestion/'+f.idFormation">{{ f.codeFormation }}</a></th>
-                                    <td class="align-middle"> {{ f.nom }}</td>
-                                    <td class="align-middle">{{ f.description }}</td>
-                                    <td class="align-middle">{{ f.stheme.theme.nom }}</td>
-                                    <td class="align-middle">{{ f.stheme.nom }}</td>
-                                    <td class="align-middle text-center"><span class="badge bg-primary rounded-pill me-1 ms-1 ps-3 pe-3 text-center fs-5 pt-0 pb-2">{{ f.nbreJrs| number }}</span></td>
+                            <tbody *ngFor="let s of sessions$|async">
+                                <tr>
+                                    <th scope="row" class="align-middle own-text"><a [routerLink]="'/session/gestion/'+s.idSession">{{ s.codeSession }}</a></th>
+                                    <td class="align-middle"> {{ s.nom }}</td>
+                                    <td class="align-middle"> {{ s.type }}</td>
+                                    <td class="align-middle"> {{ s.dateDebut }}</td>
+                                    <td class="align-middle"> {{ s.dateFin }}</td>
+                                    <td class="align-middle"> {{ s.formation.codeFormation }}</td>
+                                    <td class="align-middle"> {{ s.formateur.nom }}</td>
+                                    <td class="align-middle"> {{ s.prix }}</td>
+                                    <td class="align-middle"> {{ s.statut }}</td>
+                                    <td class="align-middle">{{ s.description }}</td>
                                     <td class="align-middle"><button class="btn btn-danger btn-sm"
                                         appConfirm
                                         [confirmMessage]="'Voulez-vous réellement supprimer cette formation ?'"
-                                        (confirmClick)="deleteForm(f.idFormation)">Supprimer</button></td>
+                                        (confirmClick)="deleteSession(s.idSession)">Supprimer</button></td>
                                 </tr>
                             </tbody>
                         </table>

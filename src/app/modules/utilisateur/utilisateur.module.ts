@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { UtilisateurService } from './utilisateur.service';
 import { SearchUtilisateurComponent } from './search-utilisateur/search-utilisateur.component';
 import { LoderComponent } from './loder/loder.component';
+import {matTabsAnimations, MatTabsModule} from '@angular/material/tabs';
 
 
 //canActivate: [AuthGuard]
@@ -29,11 +30,13 @@ const utilisateurroutes: Routes =[
     AjoutUtilisateurComponent,
     SearchUtilisateurComponent,
     LoderComponent,
+    
   ],
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forChild(utilisateurroutes)
+    RouterModule.forChild(utilisateurroutes),
+    MatTabsModule
   ],
   providers: [UtilisateurService]
 })

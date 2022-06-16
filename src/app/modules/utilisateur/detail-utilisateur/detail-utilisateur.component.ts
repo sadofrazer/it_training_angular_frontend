@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Apprenant } from 'src/app/entities/Utilisateur/Apprenant';
 import { Utilisateur } from 'src/app/entities/Utilisateur/utilisateur';
 
 import { ApprenantService } from '../apprenant.service';
@@ -18,6 +19,7 @@ export class DetailUtilisateurComponent implements OnInit {
 
   utilisateurList: Utilisateur[];
   utilisateur: Utilisateur | undefined;
+  apprenant: Apprenant | undefined;
  
  
 
@@ -30,10 +32,17 @@ export class DetailUtilisateurComponent implements OnInit {
   ngOnInit() {
 
     const utilisateurId: string|null = this.route.snapshot.paramMap.get('idUtilisateur');
+    const apprenantId: string|null = this.route.snapshot.paramMap.get('idUtilisateur');
+
+    
 
     if(utilisateurId){
       
       this.utilisateurService.getUtilisateurById(+utilisateurId).subscribe(utilisateur => this.utilisateur = utilisateur);
+    }
+    if(apprenantId){
+      
+      this.apprenantService.getApprenantById(+utilisateurId).subscribe(apprenant => this.apprenant = apprenant);
     }
   }
   goToUtilisateurList(){
@@ -41,6 +50,9 @@ export class DetailUtilisateurComponent implements OnInit {
   }
   goToEditUtilisateur(utilisateur: Utilisateur){
     this.router.navigate(['/modif/utilisateur/',utilisateur.idUtilisateur]);
+  }
+  goToEditApprenant(apprenant: Apprenant){
+    this.router.navigate(['/modif/utilisateur/',apprenant.idUtilisateur]);
   }
   deleteUtilisateur(utilisateur: Utilisateur){4
 

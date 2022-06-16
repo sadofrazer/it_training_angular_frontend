@@ -10,6 +10,8 @@ import { CoreModule } from './modules/core/core.module';
 import { FormationModule } from './modules/formation/formation.module';
 import { FormationService } from './modules/formation/services/formation.service';
 import { FormsModule } from '@angular/forms';
+import { SessionModule } from './modules/session/session.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UtilisateurModule } from './modules/utilisateur/utilisateur.module';
 
 @NgModule({
@@ -23,8 +25,9 @@ import { UtilisateurModule } from './modules/utilisateur/utilisateur.module';
     NgbModule,
     CoreModule,
     FormationModule,
+    FormsModule,
     UtilisateurModule,
-    FormsModule
+    BrowserAnimationsModule
   ],
   exports: [
     AccueilComponent

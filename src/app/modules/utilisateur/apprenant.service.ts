@@ -12,23 +12,23 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
   })
   //http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/utilisateur
   export class ApprenantService {
-  updateUtilisateur(apprenant: Apprenant) {
-    throw new Error('Method not implemented.');
-  }
+  APIAPP ="http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/apprenants";
+  LASTAPIAPP = 'http://localhost:8080/UtilisateurRestApi/rest/apprenants';
+  APITYPE = `http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/typeuser`
   
     constructor (private http: HttpClient){
-  
+    
      }
     
      
-     getApprenanttList(): Observable<Apprenant[]>{
-      return this.http.get<Apprenant[]>('http://localhost:8080/UtilisateurRestApi/rest/apprenants').pipe(
+     getApprenantList(): Observable<Apprenant[]>{
+      return this.http.get<Apprenant[]>(this.APIAPP).pipe(
        tap((respose)=> this.log(respose)),
        catchError((error)=> this.mesErrors(error,[]))
       );
      }
      getApprenantById(utilisateurId: number): Observable<Apprenant|undefined>{
-      return this.http.get<Apprenant>(`http://localhost:8080/UtilisateurRestApi/rest/apprenants/${utilisateurId}`).pipe(
+      return this.http.get<Apprenant>(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/apprenants/${utilisateurId}`).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,undefined))
         );
@@ -38,7 +38,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
         headers: new HttpHeaders({'Content-Type': 'application/json'})
       };
   
-      return this.http.put('http://localhost:8080/UtilisateurRestApi/rest/apprenants', apprenant, httpOptions).pipe(
+      return this.http.put(this.APIAPP, apprenant, httpOptions).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,null))
         );
@@ -46,7 +46,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
     }
     
     deleteUtilisateurById(utilisateurId: number): Observable<null>{
-       return this.http.delete(`http://localhost:8080/UtilisateurRestApi/rest/apprenants/${utilisateurId}`).pipe(
+       return this.http.delete(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/apprenants/${utilisateurId}`).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,null))
         );
@@ -57,7 +57,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
         headers: new HttpHeaders({'Content-Type': 'application/json'})
       };
   
-      return this.http.post<Apprenant>(`http://localhost:8080/UtilisateurRestApi/rest/apprenants`, apprenant, httpOptions).pipe(
+      return this.http.post<Apprenant>(this.APIAPP, apprenant, httpOptions).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,null))
         );
@@ -83,7 +83,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
   
     getUtilisateurTypeList(): Observable<TypeUser[]>{
     
-      return this.http.get<TypeUser[]>(`http://localhost:8080/UtilisateurRestApi/rest/typeuser`).pipe(
+      return this.http.get<TypeUser[]>(this.APITYPE).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error, []))
         );

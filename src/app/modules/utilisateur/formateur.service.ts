@@ -11,20 +11,22 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
   })
   //http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/utilisateur
   export class FormateurService {
-  
+    APIFORM = "http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/formateurs"
+    LASTAPIFORM = 'http://localhost:8080/UtilisateurRestApi/rest/formateurs';
+    APITYPE = `http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/typeuser`;
     constructor (private http: HttpClient){
   
      }
     
      
      getFormateurtList(): Observable<Formateur[]>{
-      return this.http.get<Formateur[]>('http://localhost:8080/UtilisateurRestApi/rest/formateurs').pipe(
+      return this.http.get<Formateur[]>(this.APIFORM).pipe(
        tap((respose)=> this.log(respose)),
        catchError((error)=> this.mesErrors(error,[]))
       );
      }
      getFormateurById(utilisateurId: number): Observable<Formateur|undefined>{
-      return this.http.get<Formateur>(`http://localhost:8080/UtilisateurRestApi/rest/formateurs/${utilisateurId}`).pipe(
+      return this.http.get<Formateur>(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/formateurs/${utilisateurId}`).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,undefined))
         );
@@ -34,7 +36,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
         headers: new HttpHeaders({'Content-Type': 'application/json'})
       };
   
-      return this.http.put('http://localhost:8080/UtilisateurRestApi/rest/formateurs', formateur, httpOptions).pipe(
+      return this.http.put(this.APIFORM, formateur, httpOptions).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,null))
         );
@@ -42,7 +44,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
     }
     
     deleteUtilisateurById(utilisateurId: number): Observable<null>{
-       return this.http.delete(`http://localhost:8080/UtilisateurRestApi/rest/formateurs/${utilisateurId}`).pipe(
+       return this.http.delete(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/formateurs/${utilisateurId}`).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,null))
         );
@@ -53,7 +55,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
         headers: new HttpHeaders({'Content-Type': 'application/json'})
       };
   
-      return this.http.post<Formateur>(`http://localhost:8080/UtilisateurRestApi/rest/formateurs`, Formateur, httpOptions).pipe(
+      return this.http.post<Formateur>(this.APIFORM, Formateur, httpOptions).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,null))
         );
@@ -79,7 +81,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
   
     getUtilisateurTypeList(): Observable<TypeUser[]>{
     
-      return this.http.get<TypeUser[]>(`http://localhost:8080/UtilisateurRestApi/rest/typeuser`).pipe(
+      return this.http.get<TypeUser[]>(this.APITYPE).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error, []))
         );
