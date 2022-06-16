@@ -5,7 +5,7 @@
   <div class="container-fluid d-flex align-items-center">
       <!-- RouterLink va généré pour nous l'attribut href -->
       <a class="navbar-brand me-5 ps-5"   [routerLink]="'/accueil'">
-        <img src="assets/img/logoit.png" alt="image"/> 
+        <img src="assets/img/logoit.png" alt="image"/>
         <span class="h3 me-5">IT Training</span>
       </a>
 
@@ -34,18 +34,19 @@
               <li class="nav-item">
                   <a class="nav-link h6 me-3 p-3" *ngIf="connexionService.isConnected()==false" [routerLink]="'certification'" (click)="isMenuCollapsed = true">
                       Certifications
-                  </a>                   
+                  </a>
               </li>
-              
+
               <li class="nav-item">
                 <a class="nav-link h6 me-3 p-3" *ngIf="connexionService.isApprenant()==true" [routerLink]="'certification'" (click)="isMenuCollapsed = true">
-                    mon panier 
-                </a>                   
+                    mon panier
+                </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link h6 me-3 p-3" *ngIf="connexionService.isFormateur()==true" [routerLink]="'certification'" (click)="isMenuCollapsed = true">
-                    mes sessions 
-
+                    mes sessions
+                </a>
+               </li>
               <!--Responsable Catalogue-->
               <li class="nav-item dropdown">
                 <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'#'"  (click)="isMenuCollapsed = true">
@@ -92,8 +93,6 @@
                   <li><a class="dropdown-item" [routerLink]="'/salle/gestion'">Valider les checks logistique</a></li>
                 </ul>
               </li>
-                </ul>
-            </li>
             <li class="nav-item dropdown">
               <a class="nav-link  dropdown-toggle h6 me-3 p-3" *ngIf="connexionService.isResponsable()==true" data-bs-toggle="dropdown"  [routerLink]="'#'"  (click)="isMenuCollapsed = true">
                   Dashboard
@@ -102,11 +101,11 @@
                 <li><a class="dropdown-item" [routerLink]="'/dashboard/dashboard_formation'">tableau de bord formation</a></li>
                 <li><a class="dropdown-item" [routerLink]="'/dashboard/dashboard_logistique'">tableau de bord logistique</a></li>
               </ul>
-          </li>
+            </li>
             <li class="nav-item ">
               <a class="nav-link h6 me-3 p-3" [routerLink]="'contact'" (click)="isMenuCollapsed = true">
                   Contact
-              </a>                   
+              </a>
             </li>
           </ul>
           <form  (ngSubmit)="getSearchWord()" class="d-flex ms-5" role="search">
