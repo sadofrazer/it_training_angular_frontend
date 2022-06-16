@@ -1,14 +1,14 @@
 <div class="container-fluid full">
     <div class="row justify-content-md-center">
-      <div class="col-md-4 mt-5">
+      <div class="col-sm-2 mt-5">
       <div class="alert alert-danger" *ngIf="erreur == 1">
         <strong>login ou mot de passe erronés..</strong>
       </div>
         <form action="">
           <div class="form-group mt-5">
-            <label 
-              class="form-label" 
-              for="login">login</label>
+            <label
+              class="form-label fst-italic fs-5" 
+              for="login"> <b>Login</b></label>
             <input
               id="login"
               type="text"
@@ -17,9 +17,9 @@
               [(ngModel)]="login"/>
           </div>
           <div class="form-group mt-4">
-            <label for="">
-              Mot de passe
-            </label>
+            <label
+              class="form-label fst-italic fs-5" 
+              for="password"> <b>Mot de passe</b></label>
             <input
               type="password"
               name="password"
@@ -35,7 +35,7 @@
             </button>
             <button
             type="button"
-            class="btn btn-secondary col-lg-3 mr-2">
+            class="btn btn-secondary col-lg-3 ms-3">
             inscription
             </button>
           </div>
