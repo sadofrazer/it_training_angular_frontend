@@ -57,7 +57,7 @@ export class UtilisateurFormComponent implements OnInit {
   onSubmit(){
     //met à jour le type de l'utilisateur avec l'objet type recu du ngmodel de notre select
     if(this.af){
-      this.utilisateur.typeuser=this.af;
+      this.utilisateur.typeUser=this.af;
     }
 
     if(this.isAddForm && this.af.nom === 'FORMATEUR'){

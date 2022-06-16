@@ -1,9 +1,7 @@
-import { Utilisateur } from "./utilisateur";
-
-export class TypeUser extends Utilisateur{
+export class TypeUser{
     idType : number ;
     description: string;
-    override nom : string;
+    nom : string;
 
     
 }

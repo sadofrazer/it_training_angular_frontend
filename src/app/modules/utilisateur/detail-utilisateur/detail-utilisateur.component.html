@@ -30,10 +30,10 @@
                   <td>Date de naissance</td>
                   <td><strong>{{ utilisateur.dateNaiss |  date:"MM/dd/yyyy" }}</strong></td>
                 </tr>
-                <tr *ngIf="utilisateur.typeuser">
+                <tr *ngIf="utilisateur.typeUser">
                 <td >Type Utilisateur</td>
                 <td>
-                 {{utilisateur.typeuser.nom}}
+                 {{utilisateur.typeUser.nom}}
                 </td>
               </tr>
               <tr>

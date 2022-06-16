@@ -22,8 +22,8 @@
       <tr *ngFor="let utilisateur of utilisateurList" (click)="goToUtilisateur(utilisateur)"   >
         <td>{{utilisateur.nom}}</td>
         <td>{{utilisateur.prenom}}</td>
-        <th scope="row">{{utilisateur.societe    }}</th>
-        <td>{{utilisateur.typeuser.nom}}</td>
+        <th scope="row">{{utilisateur.societe}}</th>
+        <td>{{utilisateur.typeUser.nom}}</td>
       </tr>
     </tbody>
   </table>
@@ -47,7 +47,7 @@
           <td>{{responsable.nom}}</td>
           <td>{{responsable.prenom}}</td>
           <th scope="row">{{responsable.societe    }}</th>
-          <td>{{responsable.typeuser.nom}}</td>
+          <td>{{responsable.typeUser.nom}}</td>
         </tr>
       </tbody>
     </table>
@@ -70,7 +70,7 @@
           <td>{{apprenant.nom}}</td>
           <td>{{apprenant.prenom}}</td>
           <th scope="row">{{apprenant.societe    }}</th>
-          <td>{{apprenant.typeuser.nom}}</td>
+          <td>{{apprenant.typeUser.nom}}</td>
         </tr>
       </tbody>
     </table>
@@ -92,7 +92,7 @@
           <td>{{formateur.nom}}</td>
           <td>{{formateur.prenom}}</td>
           <th scope="row">{{formateur.societe    }}</th>
-          <td>{{formateur.typeuser.nom}}</td>
+          <td>{{formateur.typeUser.nom}}</td>
         </tr>
       </tbody>
     </table>

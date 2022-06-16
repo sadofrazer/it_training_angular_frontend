@@ -17,7 +17,7 @@ export class Utilisateur{
     societe: string;
     statut: string;
     
-    typeuser: TypeUser
+    typeUser: TypeUser
  
 
 constructor(
