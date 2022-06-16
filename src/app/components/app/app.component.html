@@ -22,6 +22,19 @@
                       Accueil
                   </a>
               </li>
+
+              <li class="nav-item">
+                <a class="nav-link h6 me-3 p-3" *ngIf="connexionService.isConnected()==false" [routerLink]="'certification'" (click)="isMenuCollapsed = true">
+                    A propos de nous
+                </a>
+            </li>
+
+              <li class="nav-item">
+                <a class="nav-link h6 me-3 p-3" *ngIf="connexionService.isConnected()==true" [routerLink]="''" (click)="isMenuCollapsed = true">
+                    Mon profil
+                </a>
+            </li>
+
               <li class="nav-item dropdown">
                   <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'/formation/catalogue'"  (click)="isMenuCollapsed = true">
                       Formations
@@ -37,17 +50,27 @@
                   </a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link h6 me-3 p-3" *ngIf="connexionService.isApprenant()==true" [routerLink]="'certification'" (click)="isMenuCollapsed = true">
-                    mon panier
+              
+
+              <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle h6 me-3 p-3" *ngIf="connexionService.isApprenant()==true" data-bs-toggle="dropdown"  [routerLink]="'#'"  (click)="isMenuCollapsed = true">
+                    Dashboard
                 </a>
+                <ul class="dropdown-menu dropdown-menu-dark fs-6">
+                  <li><a class="dropdown-item " [routerLink]="''">Mon panier</a></li>
+                  <li><a class="dropdown-item" [routerLink]="''">Mes inscriptions</a></li>
+                </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link h6 me-3 p-3" *ngIf="connexionService.isFormateur()==true" [routerLink]="'certification'" (click)="isMenuCollapsed = true">
-                    mes sessions
+              <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle h6 me-3 p-3" *ngIf="connexionService.isFormateur()==true" data-bs-toggle="dropdown"  [routerLink]="'#'"  (click)="isMenuCollapsed = true">
+                    Dashboard
                 </a>
-               </li>
-              <!--Responsable Catalogue-->
+                <ul class="dropdown-menu dropdown-menu-dark fs-6">
+                  <li><a class="dropdown-item " [routerLink]="''">Mes sessions</a></li>
+                  <li><a class="dropdown-item" [routerLink]="''">Mes évaluations</a></li>
+                </ul>
+              </li>
+              <!--Responsable Catalogue
               <li class="nav-item dropdown">
                 <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'#'"  (click)="isMenuCollapsed = true">
                     Administration
@@ -56,8 +79,9 @@
                   <li><a class="dropdown-item "  [routerLink]="'/formation/gestion/catalogue'">Gestion du catalogue</a></li>
                 </ul>
               </li>
-
-              <!--Responsable Formations-->
+              -->
+            
+              <!--Responsable Formations
               <li class="nav-item dropdown">
                 <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'#'"  (click)="isMenuCollapsed = true">
                     Administration
@@ -67,8 +91,9 @@
                   <li><a class="dropdown-item" [routerLink]="'/salle/inscription'">Gestion des inscriptions</a></li>
                 </ul>
               </li>
+              -->
 
-              <!--Responsable Logistique-->
+              <!--Responsable Logistique
               <li class="nav-item dropdown">
                 <a class="nav-link  dropdown-toggle h6 me-3 p-3" data-bs-toggle="dropdown"  [routerLink]="'#'"  (click)="isMenuCollapsed = true">
                     Administration
@@ -78,6 +103,7 @@
                   <li><a class="dropdown-item" [routerLink]="'/salle/gestion'">Valider les checks logistique</a></li>
                 </ul>
               </li>
+              -->
 
               <!--Administrateur-->
               <li class="nav-item dropdown">
@@ -98,8 +124,8 @@
                   Dashboard
               </a>
               <ul class="dropdown-menu dropdown-menu-dark fs-6">
-                <li><a class="dropdown-item" [routerLink]="'/dashboard/dashboard_formation'">tableau de bord formation</a></li>
-                <li><a class="dropdown-item" [routerLink]="'/dashboard/dashboard_logistique'">tableau de bord logistique</a></li>
+                <li><a class="dropdown-item" [routerLink]="'/dashboard/dashboard_formation'">Dashboard formation</a></li>
+                <li><a class="dropdown-item" [routerLink]="'/dashboard/dashboard_logistique'">Dashboard logistique</a></li>
               </ul>
             </li>
             <li class="nav-item ">
@@ -135,10 +161,10 @@
     <section class="">
       <p class="d-flex justify-content-center align-items-center">
         <span class="me-3">Register for free</span>
-        <button mdbRipple type="button" *ngIf="connexionService.isConnected()==false" class="btn btn-outline-light btn-rounded">
+        <button mdbRipple type="button" *ngIf="connexionService.isConnected()==false" class="btn btn-outline-light btn-rounded" [routerLink]="['/connexion']">
           se connecter!
         </button>
-        <button mdbRipple type="button" *ngIf="connexionService.isConnected()==true" class="btn btn-outline-light btn-rounded">
+        <button mdbRipple type="button" *ngIf="connexionService.isConnected()==true" class="btn btn-outline-light btn-rounded" (click)="onLogout()">
           se déconnecter!
         </button>
       </p>
