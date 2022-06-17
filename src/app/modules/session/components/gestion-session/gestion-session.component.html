@@ -1,4 +1,4 @@
-<!-- <div class="container-fluid full">
+<div class="container-fluid full">
     <div class="row d-flex justify-content-center   align-items-center">
         <div class="text-center  mt-5  mb-4 ">
             <span class="text-uppercase fst-italic text-wrap fs-4 own-title">
@@ -48,17 +48,20 @@
                             <label for="inputFormation" class="form-label">Formation</label>
                             <select class="dropdownlist" id="inputFormation" class="form-select"  (change)="selectFormationChange($event)" name="formation" required>
                                 <option value="null" disabled>Choisir la formation...</option>
-                                <option *ngFor="let f of formations$|async" [ngValue]="f" [selected]="session.formation.codeFormation===f.codeFormation">{{f.codeFormation}}-{{f.nom}}</option>
+                                <option *ngFor="let f of formations$|async" [ngValue]="f" [selected]="session.formation.codeFormation===f?.codeFormation">{{f?.codeFormation}}-{{f?.nom}}</option>
                             </select>
                         </div>
 
                         <div class="col-md-6">
                             <label for="inputFormateur" class="form-label">Formateur</label>
-                            <select class="dropdownlist" id="inputFormateur" class="form-select"  (change)="selectFormateurChange($event)" name="formateur" required>
+                            <select class="dropdownlist" id="inputFormateur" class="form-select"  [(ngModel)]="selectFormateur" (change)="selectFormateurChange($event)" name="formateur" required #formateur="ngModel">
                                 <option value="null" disabled selected>Choisir le formateur ...</option>
                                 <option value="null">Aucun Formateur pour l'instant</option>
-                                <option *ngFor="let f of formateurs" [ngValue]="f" [selected]="session.formateur.codeUser===f.codeUser">{{f.codeUser}}-{{f.nom}}</option>
+                                <option *ngFor="let f of formateurs" [ngValue]="f" [selected]="session?.formateur?.codeUser===f?.codeUser">{{f?.codeUser}}-{{f?.nom}}</option>
                             </select>
+                            <div *ngIf="(formateur.invalid && formateur.dirty) || formateur.value==null" class="invalid-feedback text-danegr">
+                                Veuillez choisir un formateur SVP !!!
+                             </div>
                         </div>
 
                         <div class="col-md-12 mb-3">
@@ -169,7 +172,7 @@
                                              </p>
                                         </ng-container>
                                     </td>
-                                    <td class="align-middle"> {{ s?.prix | currency:'EUR'}}</td>
+                                    <td class="align-middle own-text"> {{ s?.prix | currency:'EUR'}}</td>
                                     <td class="align-middle"> {{ s?.statut }}</td>
                                     <td class="align-middle">{{ s?.description }}</td>
                                     <td class="align-middle"><button class="btn btn-danger btn-sm"
@@ -185,4 +188,4 @@
         </ngb-accordion>
     </div>
 </div>
--->
+

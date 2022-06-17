@@ -1,6 +1,7 @@
 
 import { Session } from "src/app/modules/session/entities/Session";
-import { Apprenant } from "../Utilisateur/utilisateur";
+import { Apprenant } from "../Utilisateur/Apprenant";
+
 
 export class Inscription{
     public idInscription : number;

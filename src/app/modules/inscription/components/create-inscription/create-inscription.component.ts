@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConnexionService } from 'src/app/components/connexion/connexion.service';
 import { Inscription } from 'src/app/entities/Inscription/Inscription';
-import { Apprenant } from 'src/app/entities/Utilisateur/utilisateur';
+
 import { FormationService } from 'src/app/modules/formation/services/formation.service';
 import { AttribSalle } from 'src/app/modules/salle/entities/AttribSalle';
 import { AttribSalleService } from 'src/app/modules/salle/services/attrib-salle.service';
-import { SalleService } from 'src/app/modules/salle/services/salle.service';
 import { Session } from 'src/app/modules/session/entities/Session';
 import { SessionService } from 'src/app/modules/session/services/session.service';
 import {InscriptionService} from 'src/app/modules/inscription/services/inscription.service'
+import { Apprenant } from 'src/app/entities/Utilisateur/Apprenant';
+import { ApprenantService } from 'src/app/modules/utilisateur/apprenant.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class CreateInscriptionComponent implements OnInit {
 
   constructor(private formationService:FormationService, private sessionService: SessionService,
     private inscriptionService:InscriptionService, private attribSalleService: AttribSalleService,
-    private connexionService: ConnexionService,
+    private connexionService: ConnexionService, private apprenantService:ApprenantService,
     private activatedRoute: ActivatedRoute,private router: Router) { }
 
   public session: Session;
@@ -30,12 +31,28 @@ export class CreateInscriptionComponent implements OnInit {
   public id : number;
   public attribSalles: AttribSalle[]=[]; 
   public varOk:boolean=false;
+  public appOk:boolean=false;
   public nbreMax: number = 0;
 
   ngOnInit(): void {
 
-    //test du service connexion
-    console.log(this.connexionService.pers)
+    //récupération de l'apprenant connecté à partir du Local Storage
+    if(localStorage.getItem('type') && localStorage.getItem('type')){
+      let typeUser = localStorage.getItem('type');
+      let idUser = parseInt(localStorage.getItem('id'));
+      if(typeUser=='APPRENANT'){
+        console.log('Apprenant connecté')
+        this.apprenantService.getApprenantById(idUser).subscribe((app:Apprenant)=>{
+          if(app){
+            this.apprenant=app;
+            this.appOk=true;
+            
+          }
+          console.log(this.apprenant);
+        })
+      }
+    }
+    
 
     //initialisation des variable
     this.apprenant=new Apprenant();
@@ -66,11 +83,13 @@ export class CreateInscriptionComponent implements OnInit {
   }
 
   public addInscription():void{
+    
     //assignation des valeurs à l'inscription
     this.inscription.session=this.session;
     this.inscription.statut='NEW';
     this.inscription.dateInscription=new Date();
     this.inscription.apprenant= this.apprenant;
+
 
     //insertion en BDD
     this.inscriptionService.addInscription(this.inscription).subscribe((i:Inscription)=>{

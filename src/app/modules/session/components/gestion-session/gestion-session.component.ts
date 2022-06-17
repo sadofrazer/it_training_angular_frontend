@@ -17,6 +17,7 @@ import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
 import { ConnexionService } from 'src/app/components/connexion/connexion.service';
+import { FormateurService } from 'src/app/modules/utilisateur/formateur.service';
 
 
 export interface Fruit {
@@ -44,6 +45,7 @@ export class GestionSessionComponent implements OnInit {
 
   public isCreation:boolean =true;
   public varOk:boolean=false;
+  public formOk:boolean=false;
   public varAttrib:boolean=false;
   public dateNow: Date;
 
@@ -58,13 +60,20 @@ export class GestionSessionComponent implements OnInit {
 
   constructor(private formationService:FormationService, private sessionService: SessionService,
     private salleService:SalleService, private attribSalleService: AttribSalleService,
-    private connexionService: ConnexionService,
+    private connexionService: ConnexionService, private formateurService:FormateurService,
     private activatedRoute: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
     console.log(this.connexionService.pers)
     this.selectFormateur=new Formateur();
     this.selectFormateur=null;
+
+    //récupération des formateurs
+    this.formateurService.getFormateurtList().subscribe((f:Formateur[])=>{
+      this.formateurs=f;
+      this.formOk=true;
+    })
+
     //this.attribSalle=new AttribSalle();
     this.dateNow = new Date();
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -106,11 +115,12 @@ export class GestionSessionComponent implements OnInit {
 
   public selectFormateurChange(e):void{
     let value : string = e.target.value;
+    console.log(e.target.value);
     if(value=="null"){
       this.session.formateur=null;
       this.selectFormateur=null;
     }
-    console.table(this.session.formateur);
+    console.log(this.selectFormateur);
   }
 
   public selectFormationChange(e):void{
