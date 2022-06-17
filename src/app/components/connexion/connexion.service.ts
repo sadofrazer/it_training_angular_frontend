@@ -16,6 +16,7 @@ export class ConnexionService {
   public login: string;
   public isloggedIn: boolean = false;
   public type: string;
+  public pers = new Utilisateur();
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -28,6 +29,7 @@ export class ConnexionService {
 
   seDeconnecter(){
     localStorage.clear();
+    this.pers=null;
     this.router.navigate(['/']);
   }
 

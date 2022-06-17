@@ -16,6 +16,7 @@ import { SessionModule } from './modules/session/session.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UtilisateurModule } from './modules/utilisateur/utilisateur.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,

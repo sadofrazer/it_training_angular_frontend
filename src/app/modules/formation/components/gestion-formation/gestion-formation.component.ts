@@ -115,7 +115,7 @@ export class GestionFormationComponent implements OnDestroy, OnInit {
   public deleteForm(id: number):void{
     this.formationService.deleteForm(id).subscribe((b:boolean)=>{
       if(b){
-        this.router.navigate(['/formation/gestion/']);
+        this.router.navigate(['/formation/gestion/1']);
       }
     })
   }

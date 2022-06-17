@@ -87,7 +87,7 @@
                             </thead>
                             <tbody *ngFor="let f of formations$">
                                 <tr (click)="clickForm(f.idFormation)">
-                                    <th scope="row" class="align-middle own-text"><a [routerLink]="'/formation/gestion/'+f.idFormation">{{ f.codeFormation }}</a></th>
+                                    <th scope="row" class="align-middle own-text"><a class="own-text" [routerLink]="'/formation/gestion/'+f.idFormation">{{ f.codeFormation }}</a></th>
                                     <td class="align-middle"> {{ f.nom }}</td>
                                     <td class="align-middle">{{ f.description }}</td>
                                     <td class="align-middle">{{ f.stheme.theme.nom }}</td>
