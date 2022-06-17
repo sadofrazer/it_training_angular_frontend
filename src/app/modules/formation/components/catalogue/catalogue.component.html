@@ -14,7 +14,7 @@
     <div class="list mt-4" *ngIf="formations$">
         <div class="row g-4 p-3 d-flex justify-content-start   align-items-center w-100">
             <div class="col-sm-2 " *ngFor="let f of formations$| async">
-                <div class="card mb-3 d-inline-block position-relative">
+                <div class="card mb-3 d-inline-block position-relative w-100">
                     <div class="row img">
                         <img [src]="'../../../../../assets/img/formations/'+f.codeFormation+'.jpg'"  onerror="this.src='https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'" 
                         class="card-img-top h-100 " alt="formations">
