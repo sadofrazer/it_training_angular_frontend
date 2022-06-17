@@ -6,10 +6,12 @@
     </form>
     <div *ngIf="session" >
         <p>formateur : </p>
-        <p>date de fin de formation : </p>
         <p>salles : </p>
         <!--<select  class="form-select" aria-label="Default select example">
             <option *ngFor="let session of sessions" [value]="session.idSession">{{session.nom}} - date de fin {{session.dateFin}}</option>
         </select>--> 
     </div>      
+</div> 
+<div *ngIf="sessions==null" >
+    <p class="mt-5 fst-italic fs-5"><strong>Pas de tableau de bord à proposer</strong></p> 
 </div> 
