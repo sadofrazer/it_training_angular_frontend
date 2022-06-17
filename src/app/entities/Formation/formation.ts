@@ -1,5 +1,6 @@
+import { Responsable } from "../Utilisateur/Responsable";
 import { Stheme } from "./sous-theme";
-import { Responsable } from "../Utilisateur/utilisateur";
+
 
 export class Formation{
     public idFormation : number;

@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-body border-top border-dark border-2">
                       <span class="fs-5 badge bg-dark position-absolute bottom-50 start-0 p-2">{{ f.nbreJrs | number }} {{ f.nbreJrs > 1? 'Jours':'Jour' }} </span>
-                      <h4 class="card-title  mb-3">{{ f.stheme.nom }}</h4>
+                      <h4 class="card-title fs-5 mb-3"><b>{{ f.stheme.nom }}</b></h4>
                       <p class="card-text  mb-4 fs-6 h-10">{{ f.nom }}</p>
                       <button class="btn-sm btn-primary position-absolute bottom-0 start-50 translate-middle-x mb-2 mt_5" [routerLink]="'/formation/details/'+f.idFormation">En savoir plus ...</button>
                     </div>

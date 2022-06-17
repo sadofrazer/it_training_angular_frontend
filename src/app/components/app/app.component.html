@@ -1,6 +1,6 @@
 
 <!-- Utilisation des classes bootstrap pour le menu -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light  p-3 bg-light navbar-dark bg-dark w-100">
+<nav class="navbar navbar-expand-lg navbar-light bg-light  pt-3 px-2 bg-light navbar-dark bg-dark w-100">
   <!--  -->
   <div class="container-fluid d-flex align-items-center">
       <!-- RouterLink va généré pour nous l'attribut href -->
@@ -17,7 +17,7 @@
       <!-- Step 2: Add the ngbCollapse directive to the element below. -->
       <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
           <ul class="navbar-nav ms-5" id="megamenu">
-              <li class="nav-item active">
+              <li class="nav-item active p-0">
                   <a class="nav-link h6  me-3 p-3" [routerLink]="'/accueil'" (click)="isMenuCollapsed = true">
                       Accueil
                   </a>
@@ -58,7 +58,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark fs-6">
                   <li><a class="dropdown-item " [routerLink]="''">Mon panier</a></li>
-                  <li><a class="dropdown-item" [routerLink]="''">Mes inscriptions</a></li>
+                  <li><a class="dropdown-item" [routerLink]="'/inscription/lister/dashboard'">Mes inscriptions</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -111,7 +111,8 @@
                     Administration
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark fs-6">
-                  <li><a class="dropdown-item " [routerLink]="'/formation/gestion/catalogue'">Gestion du catalogue</a></li>
+                  <li><a class="dropdown-item" href="/utilisateurs">Gestion des utilisateurs</a> </li>
+                  <li><a class="dropdown-item "  [routerLink]="'/formation/gestion/catalogue'">Gestion du catalogue</a></li>
                   <li><a class="dropdown-item" [routerLink]="'/salle/gestion'">Gestion des salles</a></li>
                   <li><a class="dropdown-item" [routerLink]="'/session/gestion'">Gestion des sessions</a></li>
                   <li><a class="dropdown-item" [routerLink]="'/salle/inscription'">Gestion des inscriptions</a></li>
