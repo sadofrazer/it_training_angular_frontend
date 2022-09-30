@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Domaine } from 'src/app/entities/Formation/domaine';
+import { FORMATION_API_URL } from 'src/app/entities/Formation/formation';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Domaine } from 'src/app/entities/Formation/domaine';
 export class DomaineService {
   private _domaines: Domaine[] = [];
   constructor( private http: HttpClient) { }
-  private static readonly _apiUrl = `http://it-training-bdd.cloudapps-cm.com:8081/FormationRestApi/rest/domaine`;
+  private static readonly _apiUrl = `${FORMATION_API_URL}/domaine`;
 
 
 

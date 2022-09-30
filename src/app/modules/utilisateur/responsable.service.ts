@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { catchError, Observable, tap, of } from "rxjs";
 import { Responsable } from "src/app/entities/Utilisateur/Responsable";
 import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
+import { UTILISATEUR_API_URL } from "src/app/entities/Utilisateur/utilisateur";
 
 
 
@@ -10,11 +11,11 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
 @Injectable({
     providedIn: 'root'
   })
-  //http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/utilisateur
+  //${UTILISATEUR_API_URL}/utilisateur
   export class ResponsableService {
-  APIRESP = "http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/responsables"
+  APIRESP = `${UTILISATEUR_API_URL}/responsables`
    LASTAPIRESP = 'http://localhost:8080/UtilisateurRestApi/rest/responsables';
-   APITYPE = `http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/typeuser`;
+   APITYPE = `${UTILISATEUR_API_URL}/typeuser`;
     constructor (private http: HttpClient){
   
      }
@@ -27,7 +28,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
       );
      }
      getResponsableById(utilisateurId: number): Observable<Responsable|undefined>{
-      return this.http.get<Responsable>(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/responsables/${utilisateurId}`).pipe(
+      return this.http.get<Responsable>(`${UTILISATEUR_API_URL}/responsables/${utilisateurId}`).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,undefined))
         );
@@ -45,7 +46,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
     }
     
     deleteUtilisateurById(utilisateurId: number): Observable<null>{
-       return this.http.delete(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/responsables/${utilisateurId}`).pipe(
+       return this.http.delete(`${UTILISATEUR_API_URL}/responsables/${utilisateurId}`).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,null))
         );

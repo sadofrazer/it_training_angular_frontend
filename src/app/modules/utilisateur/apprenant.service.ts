@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { catchError, Observable, tap, of } from "rxjs";
 import { Apprenant } from "src/app/entities/Utilisateur/Apprenant";
 import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
+import { UTILISATEUR_API_URL } from "src/app/entities/Utilisateur/utilisateur";
 
 
 
@@ -10,11 +11,11 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
 @Injectable({
     providedIn: 'root'
   })
-  //http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/utilisateur
+  //${UTILISATEUR_API_URL}/utilisateur
   export class ApprenantService {
-  APIAPP ="http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/apprenants";
+  APIAPP =`${UTILISATEUR_API_URL}/apprenants`;
   LASTAPIAPP = 'http://localhost:8080/UtilisateurRestApi/rest/apprenants';
-  APITYPE = `http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/typeuser`
+  APITYPE = `${UTILISATEUR_API_URL}/typeuser`
   
     constructor (private http: HttpClient){
     
@@ -28,7 +29,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
       );
      }
      getApprenantById(utilisateurId: number): Observable<Apprenant|undefined>{
-      return this.http.get<Apprenant>(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/apprenants/${utilisateurId}`).pipe(
+      return this.http.get<Apprenant>(`${UTILISATEUR_API_URL}/apprenants/${utilisateurId}`).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,undefined))
         );
@@ -46,7 +47,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
     }
     
     deleteUtilisateurById(utilisateurId: number): Observable<null>{
-       return this.http.delete(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/apprenants/${utilisateurId}`).pipe(
+       return this.http.delete(`${UTILISATEUR_API_URL}/apprenants/${utilisateurId}`).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,null))
         );

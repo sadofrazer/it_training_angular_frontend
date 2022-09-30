@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, tap, of } from 'rxjs';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Utilisateur } from 'src/app/entities/Utilisateur/utilisateur';
+import { Utilisateur, UTILISATEUR_API_URL } from 'src/app/entities/Utilisateur/utilisateur';
 import { Apprenant } from 'src/app/entities/Utilisateur/Apprenant';
 import { TypeUser } from 'src/app/entities/Utilisateur/typeuser';
 
@@ -13,9 +13,9 @@ import { TypeUser } from 'src/app/entities/Utilisateur/typeuser';
 })
 //
 export class UtilisateurService {
-   APIUSER ="http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/utilisateurs";
+   APIUSER ='${UTILISATEUR_API_URL}/utilisateurs';
    LASTAPIUSER = 'http://localhost:8080/UtilisateurRestApi/rest/utilisateurs';
-   APITYPE = `http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/typeuser`;
+   APITYPE = `${UTILISATEUR_API_URL}/typeuser`;
 
   constructor (private http: HttpClient){
 
@@ -28,7 +28,7 @@ export class UtilisateurService {
    }
   
    getUtilisateurById(utilisateurId: number): Observable<Utilisateur|undefined>{
-    return this.http.get<Utilisateur>(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/utilisateurs/${utilisateurId}`).pipe(
+    return this.http.get<Utilisateur>(`${UTILISATEUR_API_URL}/utilisateurs/${utilisateurId}`).pipe(
       tap((respose)=> this.log(respose)),
       catchError((error)=> this.mesErrors(error,undefined))
       );
@@ -56,7 +56,7 @@ export class UtilisateurService {
     
   }
   deleteUtilisateurById(utilisateurId: number): Observable<null>{
-     return this.http.delete(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/utilisateurs/${utilisateurId}`).pipe(
+     return this.http.delete(`${UTILISATEUR_API_URL}/utilisateurs/${utilisateurId}`).pipe(
       tap((respose)=> this.log(respose)),
       catchError((error)=> this.mesErrors(error,null))
       );
@@ -78,7 +78,7 @@ export class UtilisateurService {
     if(term.length <=1){
       return of ([]);
     }
-    return this.http.get<Utilisateur[]>(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/utilisateurs/?nom=${term}`).pipe(
+    return this.http.get<Utilisateur[]>(`${UTILISATEUR_API_URL}/utilisateurs/?nom=${term}`).pipe(
       tap((respose)=> this.log(respose)),
       catchError((error)=> this.mesErrors(error, []))
       );

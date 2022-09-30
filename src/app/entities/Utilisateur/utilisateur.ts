@@ -1,5 +1,6 @@
 import { TypeUser } from "./typeuser";
 
+export const UTILISATEUR_API_URL: string = "UTILISATEUR_REST_API_URL";
 
 export class Utilisateur{
    idUtilisateur: number ;

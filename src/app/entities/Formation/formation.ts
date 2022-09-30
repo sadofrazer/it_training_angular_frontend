@@ -1,6 +1,7 @@
 import { Responsable } from "../Utilisateur/Responsable";
 import { Stheme } from "./sous-theme";
 
+export const FORMATION_API_URL: string = "FORMATION_REST_API_URL";
 
 export class Formation{
     public idFormation : number;

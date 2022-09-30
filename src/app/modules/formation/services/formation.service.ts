@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Formation } from 'src/app/entities/Formation/formation';
+import { Formation, FORMATION_API_URL } from 'src/app/entities/Formation/formation';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 
@@ -10,7 +10,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 export class FormationService {
   private _formations: Formation[] = [];
   constructor( private http: HttpClient) { }
-  private static readonly _apiUrl = `http://it-training-bdd.cloudapps-cm.com:8081/FormationRestApi/rest/formation`;
+  private static readonly _apiUrl = `${FORMATION_API_URL}/rest/formation`;
 
 
 

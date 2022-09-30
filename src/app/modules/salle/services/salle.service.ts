@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { FORMATION_API_URL } from 'src/app/entities/Formation/formation';
 import { Salle } from '../entities/salle';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Salle } from '../entities/salle';
 export class SalleService {
   constructor(private http: HttpClient) { }
 
-  private static readonly _apiUrl = `http://it-training-bdd.cloudapps-cm.com:8081/FormationRestApi/rest/salle`;
+  private static readonly _apiUrl = `${FORMATION_API_URL}/salle`;
 
   public getAllSalles() : Observable<Salle[]>{
     return this.http.get<Salle[]>(`${SalleService._apiUrl}`).pipe(

@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { FORMATION_API_URL } from 'src/app/entities/Formation/formation';
 import { Theme } from 'src/app/entities/Formation/theme';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Theme } from 'src/app/entities/Formation/theme';
 export class ThemeService {
   private _formations: Theme[] = [];
   constructor( private http: HttpClient) { }
-  private static readonly _apiUrl = `http://it-training-bdd.cloudapps-cm.com:8081/FormationRestApi/rest/theme`;
+  private static readonly _apiUrl = `${FORMATION_API_URL}/theme`;
 
 
   

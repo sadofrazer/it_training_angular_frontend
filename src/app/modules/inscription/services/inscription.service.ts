@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { FORMATION_API_URL } from 'src/app/entities/Formation/formation';
 import { Inscription } from 'src/app/entities/Inscription/Inscription';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Inscription } from 'src/app/entities/Inscription/Inscription';
 export class InscriptionService {
   constructor(private http: HttpClient) { }
 
-  private static readonly _apiUrl = `http://it-training-bdd.cloudapps-cm.com:8081/FormationRestApi/rest/inscription`;
+  private static readonly _apiUrl = `${FORMATION_API_URL}/inscription`;
 
   public getAllInscriptions() : Observable<Inscription[]>{
     return this.http.get<Inscription[]>(`${InscriptionService._apiUrl}`).pipe(

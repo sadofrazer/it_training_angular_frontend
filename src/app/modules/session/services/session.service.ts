@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { FORMATION_API_URL } from 'src/app/entities/Formation/formation';
 import { Session } from '../entities/Session';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class SessionService {
 
   constructor(private http: HttpClient) { }
 
-  private static readonly _apiUrl = `http://it-training-bdd.cloudapps-cm.com:8081/FormationRestApi/rest/session`;
+  private static readonly _apiUrl = `${FORMATION_API_URL}/session`;
 
   public getAllSessions() : Observable<Session[]>{
     return this.http.get<Session[]>(`${SessionService._apiUrl}`).pipe(

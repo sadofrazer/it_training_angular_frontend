@@ -3,17 +3,18 @@ import { Injectable } from "@angular/core";
 import { catchError, Observable, tap, of } from "rxjs";
 import { Formateur } from "src/app/entities/Utilisateur/Formateur";
 import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
+import { UTILISATEUR_API_URL } from "src/app/entities/Utilisateur/utilisateur";
 
 
 
 @Injectable({
     providedIn: 'root'
   })
-  //http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/utilisateur
+  //${UTILISATEUR_API_URL}/utilisateur
   export class FormateurService {
-    APIFORM = "http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/formateurs"
+    APIFORM = `${UTILISATEUR_API_URL}/formateurs`
     LASTAPIFORM = 'http://localhost:8080/UtilisateurRestApi/rest/formateurs';
-    APITYPE = `http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/typeuser`;
+    APITYPE = `${UTILISATEUR_API_URL}/typeuser`;
     constructor (private http: HttpClient){
   
      }
@@ -26,7 +27,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
       );
      }
      getFormateurById(utilisateurId: number): Observable<Formateur|undefined>{
-      return this.http.get<Formateur>(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/formateurs/${utilisateurId}`).pipe(
+      return this.http.get<Formateur>(`${UTILISATEUR_API_URL}/formateurs/${utilisateurId}`).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,undefined))
         );
@@ -44,7 +45,7 @@ import { TypeUser } from "src/app/entities/Utilisateur/typeuser";
     }
     
     deleteUtilisateurById(utilisateurId: number): Observable<null>{
-       return this.http.delete(`http://it-training-bdd.cloudapps-cm.com:8082/UtilisateurRestApi/rest/formateurs/${utilisateurId}`).pipe(
+       return this.http.delete(`${UTILISATEUR_API_URL}/formateurs/${utilisateurId}`).pipe(
         tap((respose)=> this.log(respose)),
         catchError((error)=> this.mesErrors(error,null))
         );
