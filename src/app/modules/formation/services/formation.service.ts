@@ -10,7 +10,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 export class FormationService {
   private _formations: Formation[] = [];
   constructor( private http: HttpClient) { }
-  private static readonly _apiUrl = `${FORMATION_API_URL}/rest/formation`;
+  private static readonly _apiUrl = `${FORMATION_API_URL}/formation`;
 
 
 

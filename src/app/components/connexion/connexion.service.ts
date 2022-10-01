@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, Observable, of, throwError } from 'rxjs';
+import { FORMATION_API_URL } from 'src/app/entities/Formation/formation';
 import { Utilisateur } from 'src/app/entities/Utilisateur/utilisateur';
 
 
@@ -10,7 +11,7 @@ import { Utilisateur } from 'src/app/entities/Utilisateur/utilisateur';
 })
 export class ConnexionService {
 
-  private readonly PERSONNE_API_URL = 'http://it-training-bdd.cloudapps-cm.com:8081/FormationRestApi/rest/connexion/';
+  private readonly PERSONNE_API_URL = `${FORMATION_API_URL}/connexion/`;
 
   public personne = new Utilisateur();
   public login: string;
